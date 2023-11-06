@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Formulário de Informações</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" maxlength="255" required><br><br>
+
+        <label for="phone">Telefone:</label>
+        <input type="text" id="phone" name="phone" maxlength="255" required><br><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" maxlength="255" required><br><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" maxlength="255" required><br><br>
+
+        <label for="project">Projeto:</label>
+        <select id="project" name="project">
+            <option value="" selected>Selecione um projeto</option>
+        </select><br><br>
+    </form>
+<label for="region">Região:</label>
+<select id="region" name="region">
+    <option value="" selected>Selecione uma região</option>
+    <option value="Norte">Norte</option>
+    <option value="Nordeste">Nordeste</option>
+    <option value="Centro-Oeste">Centro-Oeste</option>
+    <option value="Sudeste">Sudeste</option>
+    <option value="Sul">Sul</option>
+</select>
+
+</body>
+</html>
+
+{% endblock %}
