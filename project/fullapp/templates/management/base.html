@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .chat-messages {
+      height: 400px;
+      overflow-y: auto;
+    }
+
+    label[for=id_description], label[for=id_name], label[for=id_image], label[for=id_price] {
+      color: white;
+      margin-bottom: 8px;
+    }
+  </style>
+
+  <title>{% block title %}{% endblock %} | Chat</title>
+</head>
+<body class="bg-[#F9F9F9] h-full">
+  <div class="flex h-full">
+    <aside class="w-[210px] p-12 justify-between h-full">
+      <h1>Logo</h1>
+
+      <nav class="flex-1 flex flex-col gap-4 my-12">
+        <a class="p-1 px-2 rounded-md hover:text-white w-full hover:bg-[#003223] transition-colors" href="">
+          Início
+        </a>
+        <a class="p-1 px-2 rounded-md hover:text-white w-full hover:bg-[#003223] transition-colors" href="">
+          Início
+        </a>
+      </nav>
+    </aside>
+    <main class="border border-yellow-400 w-full h-full flex-1">
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
+  <!-- <nav class="flex items-center justify-between p-4 bg-slate-700">
+    <div>
+      <a href="/" class="text-xl text-white">Chat</a>
+
+    </div>
+    <div class="flex items-center space-x-4">
+      {% if request.user.is_authenticated %}
+        <span class="text-white">{{ request.user.username }}</span>
+        <a href="/products/new" class="text-white hover:text-gray-200">Novo produto</a>
+        <a href="/me/products" class="text-white hover:text-gray-200">Meus produtos</a>
+        <a href="/me/chats" class="text-white hover:text-gray-200">Minhas conversas</a>
+        <a href="/logout" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-slate-800">Sair</a>
+      {% else %}
+        <a href="/login" class="text-white hover:text-gray-200">Login</a>
+        <a href="/signup" class="px-5 py-3 rounded-xl text-white bg-slate-600 hover:bg-slate-800">Registrar</a>
+      {% endif %}
+    </div>
+  </nav> -->
+
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>

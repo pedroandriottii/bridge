@@ -1,0 +1,38 @@
+{% block title %}Registre-se{% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center">
+  <h1 class="text-2xl lg:text-6xl text-white">Registre-se</h1>
+</div>
+
+<form method="POST" action="." class="max-w-[400px] px-4 mx-auto">
+  {% csrf_token %}
+
+  <div class="mb-5">
+    <label class="text-white">Nome de usuário</label>
+    <input type="text" name="username" class="w-full mt-2 px-4 py-2 rounded-xl">
+  </div>
+
+  <div class="mb-5">
+    <label class="text-white">Senha</label>
+    <input type="password" name="password1" class="w-full mt-2 px-4 py-2 rounded-xl">
+  </div>
+
+  <div class="mb-5">
+    <label class="text-white">Repetir senha</label>
+    <input type="password" name="password2" class="w-full mt-2 px-4 py-2 rounded-xl">
+  </div>
+
+  {% if form.errors %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <div class="mb-5 p-4 rounded-xl bg-red-300 text-white">
+          <p>{{ error|escape }}</p>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  <button class="w-full px-5 py-3 rounded-xl text-white bg-slate-600 hover:bg-slate-800">Registrar</button>
+</form>
+{% endblock %}
