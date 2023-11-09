@@ -24,9 +24,16 @@ def signup(request):
 def add_manager(request):
   current_user = request.user
 
-  print(current_user.role)
-
   if current_user.role != 1:
     return redirect("login")
 
   return render(request, 'management/add-manager.html')
+
+@login_required
+def hom(request):
+  current_user = request.user
+
+  if current_user.role != 1:
+    return redirect("login")
+
+  return render(request, 'management/home.html')
