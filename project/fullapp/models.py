@@ -87,3 +87,8 @@ class Project(models.Model):
         default=StatusEnum.IN_ANALISYS
     )
 
+class Request(Project):  
+    name = models.CharField(max_length=255, null=True, blank=True)
+    phone = models.CharField(max_length=255, null=True, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='requests')
+

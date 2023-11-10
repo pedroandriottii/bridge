@@ -8,4 +8,6 @@ urlpatterns = [
   path('', views.hom, name="home"),
   path('manager/add/', views.add_manager, name="add-manager"),
   path('login/', auth_views.LoginView.as_view(template_name="auth/login.html"), name="login"),
+  path('solicitacao/',views.solicitacao, name = "solicitacao"),
+  
 ]

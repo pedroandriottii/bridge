@@ -1,0 +1,9 @@
+{% block content %}
+<h1>Create a Solicitation</h1>
+<form method="post" action="{% url 'solicitacao' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.errors }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
