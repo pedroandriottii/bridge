@@ -1,9 +1,19 @@
-{% block content %}
-<h1>Create a Solicitation</h1>
-<form method="post" action="{% url 'solicitacao' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ form.errors }}
-    <button type="submit">Submit</button>
-</form>
-{% endblock %}
+<!-- templates/myapp/create_request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Request</title>
+</head>
+<body>
+    <h2>Create Request for {{ project.title }}</h2>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>

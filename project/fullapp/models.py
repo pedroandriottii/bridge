@@ -71,6 +71,10 @@ class User(AbstractUser):
         default=RegionEnum.SAO_PAULO
     )
 
+    def __str__(self):
+        return self.username
+    
+
 class Project(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
@@ -87,8 +91,10 @@ class Project(models.Model):
         default=StatusEnum.IN_ANALISYS
     )
 
-class Request(Project):  
-    name = models.CharField(max_length=255, null=True, blank=True)
-    phone = models.CharField(max_length=255, null=True, blank=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='requests')
+class Request(models.Model):
+    project = models.ForeignKey('Project', on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
 
+    def __str__(self):
+        return f'{self.user.name} - {self.project.title}'
