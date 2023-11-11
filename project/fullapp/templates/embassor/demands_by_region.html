@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demands by Region</title>
+</head>
+<body>
+    <h1>Demands</h1>
+
+    {% if region_demands %}
+        <ul>
+            {% for demand in region_demands %}
+                <p>NOME: {{demand.user.name}} EMAIL: {{demand.user.email}} TEL: {{demand.user.phone}} PROJETO: {{demand.user.project}} OBJ: {{demand.user.objective}}
+                <li>DESC: {{demand.description}} TITLE: {{ demand }} STATUS: {{demand.status}} REGIAO: {{ demand.region}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No demands available.</p>
+    {% endif %}
+</body>
+</html>

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm, DemandForm
+from .forms import SignupForm, DemandForm, UserSignupForm
 from .models import Demand
 from django.http import HttpResponse
 
@@ -19,15 +19,34 @@ def signup(request):
     form = SignupForm()
   return render(request, 'auth/signup.html', {'form': form})
 
+def signup_user2(request):
+    if request.method == 'POST':
+        form = UserSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.role = 2
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+
+            return redirect('home')  
+
+    else:
+        form = UserSignupForm()
+
+    return render(request, 'auth/signup_user2.html', {'form': form})
+
 def signin(request):
   if request.method == 'POST':
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
+
     if user is not None:
-      login(request, user)
-      messages.success(request, 'Login bem-sucedido.')
-      return redirect('home')  
+      if user.role in [2, 3]:
+        login(request, user)
+        messages.success(request, 'Login bem-sucedido.')
+        return redirect('home')  
     else:
       messages.error(request, 'Login inválido. Por favor, tente novamente.')
   return render(request, 'auth/login.html')
@@ -60,22 +79,45 @@ def hom(request):
 def index(request):
   return render(request, 'commons/index.html')
 
+@login_required
 def demand_create(request):
-  if request.method == 'POST':
-      form = DemandForm(request.POST)
-      if form.is_valid():
-          demand = form.save(commit=False)
-          demand.user = request.user  # Associar a demanda ao usuário atual
-          demand.save()
-          return redirect('my-demands')  # Substitua pelo nome da sua view de lista de demandas
+  current_user = request.user
+  if current_user.role == 3:
+    if request.method == 'POST':
+        form = DemandForm(request.POST)
+        if form.is_valid():
+            demand = form.save(commit=False)
+            demand.user = request.user  
+            demand.save()
+            return redirect('my-demands')
+    else:
+        form = DemandForm()
+
+    return render(request, 'usuario/demand_create.html', {'form': form})
   else:
-      form = DemandForm()
+    return redirect('home')
 
-  return render(request, 'usuario/demand_create.html', {'form': form})
-
+@login_required
 def my_demands(request):
-  if request.user.is_authenticated:
-      user_demands = Demand.objects.filter(user=request.user)
-      return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
+  current_user = request.user
+  if current_user.role == 3:
+    if request.user.is_authenticated:
+        user_demands = Demand.objects.filter(user=request.user)
+        return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
+    else:
+        return render(request, 'usuario/my_demands.html', {'user_demands': None})
   else:
-      return render(request, 'usuario/my_demands.html', {'user_demands': None})
+    return redirect('home')
+
+@login_required
+def demands_by_region(request):
+    current_user = request.user
+
+    if current_user.role == 1:
+        region_demands = Demand.objects.all()
+    elif current_user.role == 2:
+        region_demands = Demand.objects.filter(region=current_user.region)
+    else:
+        return redirect('home')
+
+    return render(request, 'embassor/demands_by_region.html', {'region_demands': region_demands})

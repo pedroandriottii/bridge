@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="navbar">
+        {% if user.is_authenticated %}
+            <p>Olá, {{ user.username }} você é um  {{ user.get_role_display }} e acompanhará os projetos da região de {{ user.region }}!</p>
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            <a href="{% url 'demands_by_region' %}">Acompanhe suas demandas</a>
+        {% else %}
+            <a href="{% url 'sign-in' %}">Login</a>
+            <a href="{% url 'sign-up' %}">Signup</a>
+        {% endif %}
+    </div>
+
+    </div>
+</body>
+</html>

@@ -13,7 +13,9 @@ class DemandForm(forms.ModelForm):
         model = Demand
         fields = ['title', 'description', 'region']
 
-
-
+class UserSignupForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'name', 'phone', 'email', 'region']
 
    
