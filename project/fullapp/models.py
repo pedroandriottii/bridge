@@ -64,37 +64,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=255, null=True, blank=True)
     email = models.CharField(max_length=255, null=True, blank=True)
     password = models.CharField(max_length=255, null=True, blank=True)
-    project = models.ForeignKey('Project', on_delete=models.SET_NULL, null=True, blank=True)
-    region = models.CharField(
-        max_length=255,
-        choices=get_choices(RegionEnum),
-        default=RegionEnum.SAO_PAULO
-    )
+    region = models.CharField(choices=get_choices(RegionEnum), default=RegionEnum.PERNAMBUCO, max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.username
-    
-
-class Project(models.Model):
-    title = models.CharField(max_length=255, null=True, blank=True)
-    description = models.CharField(max_length=255, null=True, blank=True)
-    userID = models.IntegerField(null=True, blank=True)
-    embassadorID = models.IntegerField(null=True, blank=True)
-    region = models.CharField(
-        max_length=255,
-        choices=get_choices(RegionEnum),
-        default=RegionEnum.SAO_PAULO
-    )
-    status = models.CharField(
-        max_length=255,
-        choices=get_choices(StatusEnum),
-        default=StatusEnum.IN_ANALISYS
-    )
-
-class Request(models.Model):
-    project = models.ForeignKey('Project', on_delete=models.SET_NULL, null=True, blank=True)
-    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, blank=True)
-    description = models.CharField(max_length=255, null=True, blank=True)
-
-    def __str__(self):
-        return f'{self.user.name} - {self.project.title}'

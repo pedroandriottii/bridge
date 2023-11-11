@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Página Inicial</title>
 </head>
 <body>
-    <p>AQUI É O INÍCIO DO PROJETO</p>
 
-    <a href="{% url 'sign-up' %}">Cadastro</a>
+    <h1>BRIDGE</h1>
 
-    <a href="{% url 'login' %}">Login</a>
+    <div>
+        <a href="{% url 'sign-in' %}"><button>Login</button></a>
+        <a href="{% url 'sign-up' %}"><button>Registrar</button></a>
+    </div>
+
 </body>
 </html>

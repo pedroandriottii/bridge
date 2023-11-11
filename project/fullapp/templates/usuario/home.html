@@ -1,5 +1,3 @@
-<!-- myapp/templates/myapp/base.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +8,13 @@
 <body>
     <div id="navbar">
         {% if user.is_authenticated %}
-            <p>Olá, {{ user.username }} {{ user.get_role_display }}!</p>
+            <p>Olá, {{ user.username }} você é um -> {{ user.get_role_display }}!</p>
             <form method="post" action="{% url 'logout' %}" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
-
-
-            {% with project_id=1 %} {# Substitua 1 pelo ID do projeto desejado #}
-            <a href="{% url 'solicitacao' project_id=project_id %}">Criar Solicitação</a>
-            {% endwith %}
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'sign-in' %}">Login</a>
             <a href="{% url 'sign-up' %}">Signup</a>
         {% endif %}
     </div>

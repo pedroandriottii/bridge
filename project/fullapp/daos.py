@@ -1,11 +1,11 @@
-from .models import Project
+# from .models import Project
 
-def get_projects():
-  products = Project.objects.all()
+# def get_projects():
+#   products = Project.objects.all()
 
-  return products
+#   return products
 
-def get_project(pk):
-  project = Project.objects.get(pk=pk)
+# def get_project(pk):
+#   project = Project.objects.get(pk=pk)
 
-  return project
+#   return project
