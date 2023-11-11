@@ -1,0 +1,17 @@
+<!-- fullapp/templates/fullapp/my_demands.html -->
+
+{% block title %}Minhas Demandas{% endblock %}
+
+{% block content %}
+    <h2>Minhas Demandas</h2>
+
+    {% if user_demands %}
+        <ul>
+            {% for demand in user_demands %}
+                <li>{{ demand.title }} - {{ demand.description }} - {{ demand.status }} - {{ demand.region }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Você não tem nenhuma demanda no momento.</p>
+    {% endif %}
+{% endblock %}

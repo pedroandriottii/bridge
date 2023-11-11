@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from .models import User
+from .models import User, Demand
 
 
 class SignupForm(UserCreationForm):
@@ -8,6 +8,10 @@ class SignupForm(UserCreationForm):
     model = User
     fields = ('username', 'name', 'email', 'phone', 'password1', 'password2','region')
 
+class DemandForm(forms.ModelForm):
+    class Meta:
+        model = Demand
+        fields = ['title', 'description', 'region']
 
 
 

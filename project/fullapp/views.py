@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm
+from .forms import SignupForm, DemandForm
+from .models import Demand
 from django.http import HttpResponse
 
 def signup(request):
@@ -58,3 +59,23 @@ def hom(request):
 
 def index(request):
   return render(request, 'commons/index.html')
+
+def demand_create(request):
+  if request.method == 'POST':
+      form = DemandForm(request.POST)
+      if form.is_valid():
+          demand = form.save(commit=False)
+          demand.user = request.user  # Associar a demanda ao usuário atual
+          demand.save()
+          return redirect('demand-list')  # Substitua pelo nome da sua view de lista de demandas
+  else:
+      form = DemandForm()
+
+  return render(request, 'usuario/demand_create.html', {'form': form})
+
+def my_demands(request):
+    if request.user.is_authenticated:
+        user_demands = Demand.objects.filter(user=request.user)
+        return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
+    else:
+        return render(request, 'usuario/my_demands.html', {'user_demands': None})

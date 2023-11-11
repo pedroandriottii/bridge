@@ -13,6 +13,8 @@
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
+            <a href="{% url 'demand-create' %}">Solicitar Demanda</a>
+            <a href="{% url 'my-demands' %}">Minhas Demandas</a>
         {% else %}
             <a href="{% url 'sign-in' %}">Login</a>
             <a href="{% url 'sign-up' %}">Signup</a>
