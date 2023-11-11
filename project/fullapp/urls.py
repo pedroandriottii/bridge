@@ -9,6 +9,6 @@ urlpatterns = [
   path('signin/', signin, name="sign-in"),
   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
   path('demand/create/', demand_create, name='demand-create'),
-  path('my-demands/', my_demands, name='my-demands'),
+  path('mydemands/', my_demands, name='my-demands'),
   path('', index, name="index"),
 ]

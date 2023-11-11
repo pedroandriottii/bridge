@@ -64,6 +64,8 @@ class User(AbstractUser):
     phone = models.CharField(max_length=255, null=True, blank=True)
     email = models.CharField(max_length=255, null=True, blank=True)
     password = models.CharField(max_length=255, null=True, blank=True)
+    project = models.CharField(max_length=50, null=True, blank=True)
+    objective = models.CharField(max_length=255, null=True, blank=True)
     region = models.CharField(choices=get_choices(RegionEnum), default=RegionEnum.PERNAMBUCO, max_length=255, null=True, blank=True)
 
     def __str__(self):

@@ -1,5 +1,3 @@
-<!-- fullapp/templates/fullapp/my_demands.html -->
-
 {% block title %}Minhas Demandas{% endblock %}
 
 {% block content %}
@@ -8,7 +6,8 @@
     {% if user_demands %}
         <ul>
             {% for demand in user_demands %}
-                <li>{{ demand.title }} - {{ demand.description }} - {{ demand.status }} - {{ demand.region }}</li>
+            <li> Projeto: {{ user.project }} - Objetivo: {{ user.objective }} </li>    
+            <li>Titulo da Demanda:{{ demand.title }} - Descrição: {{ demand.description }} - Status da Demanda: {{ demand.status }} - Região: {{ demand.region }} - Nome do Responsável: {{ user.name }} - Número do Responsável: {{ user.phone }} - E-mail do Responsável: {{user.email}}</li>
             {% endfor %}
         </ul>
     {% else %}

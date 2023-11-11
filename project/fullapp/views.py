@@ -67,15 +67,15 @@ def demand_create(request):
           demand = form.save(commit=False)
           demand.user = request.user  # Associar a demanda ao usuário atual
           demand.save()
-          return redirect('demand-list')  # Substitua pelo nome da sua view de lista de demandas
+          return redirect('my-demands')  # Substitua pelo nome da sua view de lista de demandas
   else:
       form = DemandForm()
 
   return render(request, 'usuario/demand_create.html', {'form': form})
 
 def my_demands(request):
-    if request.user.is_authenticated:
-        user_demands = Demand.objects.filter(user=request.user)
-        return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
-    else:
-        return render(request, 'usuario/my_demands.html', {'user_demands': None})
+  if request.user.is_authenticated:
+      user_demands = Demand.objects.filter(user=request.user)
+      return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
+  else:
+      return render(request, 'usuario/my_demands.html', {'user_demands': None})
