@@ -18,4 +18,8 @@ class UserSignupForm(forms.ModelForm):
         model = User
         fields = ['username', 'password', 'name', 'phone', 'email', 'region']
 
+class AdminSignupForm(forms.ModelForm):
+  class Meta:
+    model = User
+    fields = ['username', 'password', 'name', 'phone', 'email']
    

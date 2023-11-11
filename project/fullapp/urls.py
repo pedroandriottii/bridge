@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import signin, signup, hom, add_manager, logout, index, demand_create, my_demands, signup_user2, demands_by_region
+from .views import signin, signup, hom, add_manager, logout, index, demand_create, my_demands, signup_user2, demands_by_region, signup_user3
 
 urlpatterns = [
   path('signup/', signup, name="sign-up"),
@@ -12,5 +12,6 @@ urlpatterns = [
   path('mydemands/', my_demands, name='my-demands'),
   path('', index, name="index"),
   path('signup_user2/', signup_user2, name='signup_user2'),
+  path('signup_user3/', signup_user2, name='signup_user3'),
   path('demands/by-region/', demands_by_region, name='demands_by_region'),
 ]

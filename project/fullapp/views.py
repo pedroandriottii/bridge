@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm, DemandForm, UserSignupForm
+from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm
 from .models import Demand
 from django.http import HttpResponse
 
@@ -35,6 +35,23 @@ def signup_user2(request):
         form = UserSignupForm()
 
     return render(request, 'auth/signup_user2.html', {'form': form})
+
+def signup_user3(request):
+    if request.method == 'POST':
+        form = AdminSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.role = 1
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+
+            return redirect('home')  
+
+    else:
+        form = AdminSignupForm()
+
+    return render(request, 'auth/signup_user3.html', {'form': form})
 
 def signin(request):
   if request.method == 'POST':
@@ -121,3 +138,4 @@ def demands_by_region(request):
         return redirect('home')
 
     return render(request, 'embassor/demands_by_region.html', {'region_demands': region_demands})
+
