@@ -1,12 +1,22 @@
+{% extends 'auth/authbase.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  
+    
+    {% load static %}
 </head>
 <body>
-    <h2>Login</h2>
+    <div class = "logousuario">
+        <div class = "logobridge">
+            <img id="logo" src="{% static 'img\logousuario.png' %}" alt="logo do produto bridge">
+
+            <p class = "usuarios" >Usuários</p>
+        </div>
+    </div>
     
     {% if messages %}
         <ul class="messages">
@@ -17,14 +27,15 @@
     {% endif %}
 
     <form method="post" action="{% url 'sign-in' %}">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" required>
-        <br>
+        {% csrf_token %}       
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>      
         <button type="submit">Login</button>
     </form>
+
 </body>
 </html>
+
+{% endblock %}
