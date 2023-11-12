@@ -1,41 +1,62 @@
-{% extends 'auth/authbase.html' %}
+{% extends 'auth/userbase.html' %}
+
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-    
+    {% load static %}
+    <style>
+        @media only screen and (max-width: 600px) {
+
+            input::placeholder {
+                color: #888;
+                /* You can adjust the color */
+                font-family: 'Poppins', sans-serif;
+                text-align: left;
+                vertical-align: top;
+                /* Align the text to the top */
+            }
+            
+            form {
+                color: #fff;
+                width: 100%;
+                margin-top: 122px;
+                padding: 20px 0;
+            }
+
+        }
+    </style>
     {% load static %}
 </head>
-<body>
-    <div class = "logousuario">
-        <div class = "logobridge">
-            <img id="logo" src="{% static 'img\logousuario.png' %}" alt="logo do produto bridge">
 
-            <p class = "usuarios" >Usuários</p>
+<body>
+    <div class="logousuario">
+        <div class="logobridge">
+            <img id="logo" src="{% static 'img/logousuario.png' %}" alt="logo do produto bridge">
+            <p class="usuarios">Usuários</p>
         </div>
     </div>
-    
+
     {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
 
     <form method="post" action="{% url 'sign-in' %}">
-        {% csrf_token %}       
-            <label for="username">Username:</label>
-            <input type="text" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>      
-        <button type="submit">Login</button>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Usuário" required>
+        <input type="password" name="password" placeholder="Senha" required>
+        <button type="submit" class="loginbutton">Entrar</button>
     </form>
 
 </body>
+
 </html>
 
 {% endblock %}

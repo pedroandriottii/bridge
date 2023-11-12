@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
     <style>
         body {
             margin: 0;
             padding: 0;
-        }
-
-        .wrapper {
-            width: 100%;
         }
 
         .container {
@@ -19,6 +16,20 @@
         }
 
         @media only screen and (max-width: 600px) {
+            
+            .loginbutton {
+                background: #FC9FB8 url('{% static "img/login.png" %}') no-repeat 10px center;
+                text-align: center;
+                font: bold 16px 'Poppins';
+                color: #fff;
+                padding: 10px 40px;
+                width: auto;
+                display: block;
+                margin: 22px auto 0;
+                border-radius: 10px;
+                height: 48px;
+            }/* parece que os botoes seguem formatacao quase identica. teremos de generalizar mais essa classe*/
+
             .wrapper {
                 width: 1000px;
                 margin: 0 auto; 
@@ -47,13 +58,7 @@
                 font-weight: bold;
                 
             }
-            form {
-                color: #fff;
-                width: 100%;
-                margin-top: 122px;
-                padding: 20px 0;
-            }
-
+            
             form input {
                 width: 100%;
                 height: 48px;
