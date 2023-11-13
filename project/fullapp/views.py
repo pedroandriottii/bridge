@@ -2,9 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm
+from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm
 from .models import Demand, StatusEnum
-from django.http import HttpResponse
 
 def signup(request):
   if request.method == 'POST':
@@ -30,7 +29,6 @@ def signup_user2(request):
             login(request, user)
 
             return redirect('home')  
-
     else:
         form = UserSignupForm()
 
@@ -47,7 +45,6 @@ def signup_user3(request):
             login(request, user)
 
             return redirect('home')  
-
     else:
         form = AdminSignupForm()
 
@@ -79,8 +76,39 @@ def add_manager(request):
 
   if current_user.role != 1:
     return redirect("login")
+  
+  if request.method == 'POST':
+    form = AdminSignupForm(request.POST)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.role = 1
+        user.set_password(form.cleaned_data['password'])
+        user.save()
+        return redirect('home')  
+  else:
+    form = AdminSignupForm()
 
-  return render(request, 'management/add-manager.html')
+  return render(request, 'management/add-manager.html', { 'form': form })
+
+@login_required
+def add_embassador(request):
+  current_user = request.user
+
+  if current_user.role != 1:
+    return redirect("login")
+  
+  if request.method == 'POST':
+    form = EmbassadorSignupForm(request.POST)
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.role = 2
+        user.set_password(form.cleaned_data['password'])
+        user.save()
+        return redirect('home')  
+  else:
+    form = EmbassadorSignupForm()
+
+  return render(request, 'management/add-embassador.html', { 'form': form })
 
 @login_required
 def home(request):

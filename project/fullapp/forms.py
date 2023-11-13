@@ -38,4 +38,58 @@ class AdminSignupForm(forms.ModelForm):
   class Meta:
     model = User
     fields = ['username', 'password', 'name', 'phone', 'email']
-   
+    labels = {
+      'username': 'Nome de usuário',
+      'password': 'Senha',
+      'name': 'Nome',
+      'phone': 'Telefone',
+      'email': 'E-mail',
+    }
+
+    widgets = {
+      'username': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'password': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'name': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'phone': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'email': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      })
+    }
+
+class EmbassadorSignupForm(forms.ModelForm):
+  class Meta:
+    model = User
+    fields = ['username', 'password', 'name', 'phone', 'email']
+    labels = {
+      'username': 'Nome de usuário',
+      'password': 'Senha',
+      'name': 'Nome',
+      'phone': 'Telefone',
+      'email': 'E-mail',
+    }
+
+    widgets = {
+      'username': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'password': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'name': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'phone': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      }),
+      'email': forms.TextInput(attrs={
+        'class': INPUT_CLASSES
+      })
+    }
