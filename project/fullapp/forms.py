@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from .models import User, Demand
 
+INPUT_CLASSES = 'w-full mt-2 px-4 py-2 rounded-xl bg-[#FDFDFD] border border-[#D9D9D9]'
 
 class SignupForm(UserCreationForm):
   class Meta:
@@ -12,6 +13,21 @@ class DemandForm(forms.ModelForm):
     class Meta:
         model = Demand
         fields = ['title', 'description', 'region']
+        labels = {
+          'title': 'Título',
+          'description': 'Descrição',
+          'region': 'Região',
+        }
+
+        widgets = {
+          'title': forms.TextInput(attrs={
+            'class': INPUT_CLASSES
+          }),
+          'description': forms.Textarea(attrs={
+            'class': INPUT_CLASSES + " resize-none h-[150px]"
+          }),
+          'region': forms.Select(attrs={'class': INPUT_CLASSES }),
+        }
 
 class UserSignupForm(forms.ModelForm):
     class Meta:

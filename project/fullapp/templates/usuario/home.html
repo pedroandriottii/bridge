@@ -1,114 +1,72 @@
-{% extends 'auth/userbase.html' %}
+{% extends 'commons/base.html' %}
+
+{% block title %}Início{% endblock %}
 
 {% block content %}
+<div class="p-10 lg:p-20 flex justify-between items-center">
+    <h1 class="text-lg">Olá, {{ user.username }}!</h1>
+    <button class="bg-pink-400 px-2 py-1 transition-colors rounded-md text-white">Sair</button>
+</div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <style>
-        body {
-            background-color: #f9f9f9;
-        }
-
-        #navbar p{
-            margin-left: 16px;
-            margin-top: 70px;
-            color: #2d2d2d;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        #navbar a{
-            margin-top: 80px;
-            color: #2d2d2d;
-        }
-        form{
-            margin-top: 46px;
-            margin-left: 16px;
-        }
-
-        .info-box {
-            background-color: #f9f9f9;
-            border: 2px solid rgba(45, 45, 45, 0.25);
-            padding: 16px 20px;
-            width: 90%; 
-            border-radius: 10px;
-            margin-top: 80px;
-            gap: 16px;
-            height: 156px;
-        }
-
-        .BolaAzul {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            margin-top: 90px;
-        }
-
-        .SimboloDoMais{
-            position: fixed;
-            top: 20px;
-            right: 29px;
-            margin-top: 95px;
-        }
-
-
-    </style>
-    {% load static %}
-</head>
-<body>
-    <div id="navbar">
-        {% if user.is_authenticated %}
-            <p>Olá, {{ user.username }}!</p>
-            <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-            <a href="{% url 'demand-create' %}">
-                <div class="BolaAzul">
-                    <img id="BolaAzul" src="{% static 'img/BolaAzul.png' %}" alt="Bola azul">
-                </div>
-                <div class="SimboloDoMais">
-                    <img id="SimboloDoMais2" src="{% static 'img/SimboloDoMais2.png' %}" alt="Simbolo do mais">
-                </div>
-            </a>
-            <a style="font-weight: 700;" href="{% url 'my-demands' %}">Minhas Demandas</a>
-        {% else %}
-            <a href="{% url 'sign-in' %}">Login</a>
-            <a href="{% url 'sign-up' %}">Signup</a>
-        {% endif %}
-
-        <div class="container">
-            <div class="info-box">
-                {% if user_demands %}
-                    <ul>
-                        {% for demand in user_demands %}
-                        <li>
-                        <strong>Projeto:</strong> {{ user.project }} - 
-                        <strong>Objetivo:</strong> {{ user.objective }} <br>
-                        <strong>Título da Demanda:</strong> {{ demand.title }} - 
-                        <strong>Descrição:</strong> {{ demand.description }} - 
-                        <strong>Status da Demanda:</strong> {{ demand.status }} - 
-                        <strong>Região:</strong> {{ demand.region }} - 
-                        <strong>Nome do Responsável:</strong> {{ user.name }} - 
-                        <strong>Número do Responsável:</strong> {{ user.phone }} - 
-                        <strong>E-mail do Responsável:</strong> {{user.email}}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>Você não tem nenhuma demanda no momento.</p>
-        {% endif %}
-            </div>
-        </div>
-
+<div class="flex flex-col gap-2 px-10 lg:px-20">
+    <div class="flex items-center justify-between">
+        <span class="font-bold">Minhas demandas</span>
+        <a href="/demand/create" class="grid place-items-center w-6 h-6 rounded-full text-white bg-[#A7D9C7]">+</a>
     </div>
 
-    
-</body>
-</html>
+    <div class="flex flex-col gap-2">
+        <!-- concluded_demands -->
+        {% if in_analysis_demands %}
+            {% for demand in in_analysis_demands %}
+                <div class="border border-[#2D2D2D] rounded-md p-4 flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
+                        <strong>{{ demand.title }}</strong>
+                        <span>Nome do projeto</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="bg-[#D9D9D9] text-white flex flex-col rounded-lg p-1">
+                            <span class="text-xs">Prazo estimado</span>
+                            <span class="text-sm">10/12/1233</span>
+                        </div>
 
+                        <span class="block py-1 px-2 bg-[#F59FB8] text-xs text-white rounded-full">{{ demand.status }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <span>Você não tem nenhuma demanda em análise.</span>
+        {% endif %}
+    </div>
+</div>
+<div class="flex flex-col gap-2 px-10 lg:px-20 mt-6">
+    <div class="flex justify-between">
+        <span class="font-bold">Concluídos</span>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        {% if concluded_demands %}
+            {% for demand in concluded_demands %}
+                <div class="border border-[#2D2D2D] rounded-md p-4 flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
+                        <strong>{{ demand.title }}</strong>
+                        <span>{{ demand.project }}</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="bg-[#D9D9D9] text-white flex flex-col rounded-lg p-1">
+                            <span class="text-xs">Prazo estimado</span>
+                            <span class="text-sm">10/12/1233</span>
+                        </div>
+
+                        <span class="block py-1 px-2 bg-[#F59FB8] text-xs text-white rounded-full">Em análise</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <span>Você não tem nenhuma demanda concluída.</span>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
+
+
+

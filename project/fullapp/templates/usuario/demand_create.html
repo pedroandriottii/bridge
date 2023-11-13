@@ -1,20 +1,26 @@
-<!-- fullapp/templates/fullapp/demand_create.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Demanda</title>
-</head>
-<body>
+{% extends 'commons/base.html' %}
 
-    <h1>Cadastrar Demanda</h1>
+{% block title %}Início{% endblock %}
 
+{% block content %}
+<div class="p-10 lg:p-20 flex justify-between items-center">
+    <a href="/home"><</a>
+</div>
+
+<div class="flex flex-col gap-2 px-10 lg:px-20">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar Demanda</button>
-    </form>
 
-</body>
-</html>
+        <div class="flex flex-col gap-3">
+            {{ form.as_p }}
+        </div>
+
+        <div class="w-full flex justify-center">
+            <button type="submit" class="mt-4 bg-[#F59FB8] py-2 px-3 text-white mx-auto font-bold rounded-lg">Salvar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+

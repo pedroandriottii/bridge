@@ -1,10 +1,10 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import signin, signup, hom, add_manager, logout, index, demand_create, my_demands, signup_user2, demands_by_region, signup_user3
+from .views import signin, signup, home, add_manager, logout, index, demand_create, my_demands, signup_user2, demands_by_region, signup_user3
 
 urlpatterns = [
   path('signup/', signup, name="sign-up"),
-  path('home/', hom, name="home"),
+  path('home/', home, name="home"),
   path('manager/add/', add_manager, name="add-manager"),
   path('signin/', signin, name="sign-in"),
   path('logout/', auth_views.LogoutView.as_view(), name='logout'),

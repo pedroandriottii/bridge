@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm
-from .models import Demand
+from .models import Demand, StatusEnum
 from django.http import HttpResponse
 
 def signup(request):
@@ -14,7 +14,7 @@ def signup(request):
       user = form.save()
       login(request, user)
       messages.success(request, f'Conta criada para {user.name}!')
-      return redirect("signin")
+      return redirect("sign-in")
   else:
     form = SignupForm()
   return render(request, 'auth/signup.html', {'form': form})
@@ -83,7 +83,7 @@ def add_manager(request):
   return render(request, 'management/add-manager.html')
 
 @login_required
-def hom(request):
+def home(request):
   current_user = request.user
 
   if current_user.role == 1:
@@ -91,7 +91,13 @@ def hom(request):
   elif current_user.role == 2:
     return render(request, 'embassor/home.html')
   else:
-    return render(request, "usuario/home.html")
+    user_demands_concluded = Demand.objects.filter(user=request.user, status=StatusEnum.CONCLUDED)
+    user_demands_in_analysis = Demand.objects.filter(user=request.user, status=StatusEnum.LOOKING_FOR_DONORS)
+
+    return render(request, "usuario/home.html", {
+       'concluded_demands': user_demands_concluded,
+       'in_analysis_demands': user_demands_in_analysis
+    })
 
 def index(request):
   return render(request, 'commons/index.html')
@@ -106,7 +112,7 @@ def demand_create(request):
             demand = form.save(commit=False)
             demand.user = request.user  
             demand.save()
-            return redirect('my-demands')
+            return redirect('home')
     else:
         form = DemandForm()
 
