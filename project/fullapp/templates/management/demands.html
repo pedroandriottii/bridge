@@ -1,0 +1,31 @@
+{% extends 'management/base.html' %}
+{% load static %}
+
+{% block title %}Registre-se{% endblock %}
+
+{% block content %}
+<h1 class="text-xl font-bold mt-6">Demandas</h1>
+
+<div class="flex gap-8 overflow-x-auto">
+  <div class="flex flex-col gap-4 mt-6">
+    <span class="text-sm font-medium">Demandas com prazo máximo:</span>
+
+    <div class="flex flex-col gap-4">
+      <div class="bg-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[300px]">
+        <strong>Solicitação de algo</strong>
+        <span>Nome do projeto</span>
+
+        <div class="grid grid-cols-2">
+          <span class="text-[#787878]">Região</span>
+          <span class="text-[#787878]">Embaixador</span>
+        </div>
+
+        <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
+          <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
+          <span class="text-white text-sm">10/10/2010</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

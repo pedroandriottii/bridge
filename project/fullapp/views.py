@@ -173,3 +173,12 @@ def demands_by_region(request):
 
     return render(request, 'embassor/demands_by_region.html', {'region_demands': region_demands})
 
+
+@login_required
+def demands(request):
+  current_user = request.user
+
+  if current_user.role != 1:
+    return redirect('home')
+  
+  return render(request, 'management/demands.html')
