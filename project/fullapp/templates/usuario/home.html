@@ -1,28 +1,114 @@
+{% extends 'auth/userbase.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+
+        #navbar p{
+            margin-left: 16px;
+            margin-top: 70px;
+            color: #2d2d2d;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        #navbar a{
+            margin-top: 80px;
+            color: #2d2d2d;
+        }
+        form{
+            margin-top: 46px;
+            margin-left: 16px;
+        }
+
+        .info-box {
+            background-color: #f9f9f9;
+            border: 2px solid rgba(45, 45, 45, 0.25);
+            padding: 16px 20px;
+            width: 90%; 
+            border-radius: 10px;
+            margin-top: 80px;
+            gap: 16px;
+            height: 156px;
+        }
+
+        .BolaAzul {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            margin-top: 90px;
+        }
+
+        .SimboloDoMais{
+            position: fixed;
+            top: 20px;
+            right: 29px;
+            margin-top: 95px;
+        }
+
+
+    </style>
+    {% load static %}
 </head>
 <body>
     <div id="navbar">
         {% if user.is_authenticated %}
-            <p>Olá, {{ user.username }} você é um -> {{ user.get_role_display }}!</p>
+            <p>Olá, {{ user.username }}!</p>
             <form method="post" action="{% url 'logout' %}" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
-            <a href="{% url 'demand-create' %}">Solicitar Demanda</a>
-            <a href="{% url 'my-demands' %}">Minhas Demandas</a>
+            <a href="{% url 'demand-create' %}">
+                <div class="BolaAzul">
+                    <img id="BolaAzul" src="{% static 'img/BolaAzul.png' %}" alt="Bola azul">
+                </div>
+                <div class="SimboloDoMais">
+                    <img id="SimboloDoMais2" src="{% static 'img/SimboloDoMais2.png' %}" alt="Simbolo do mais">
+                </div>
+            </a>
+            <a style="font-weight: 700;" href="{% url 'my-demands' %}">Minhas Demandas</a>
         {% else %}
             <a href="{% url 'sign-in' %}">Login</a>
             <a href="{% url 'sign-up' %}">Signup</a>
         {% endif %}
 
+        <div class="container">
+            <div class="info-box">
+                {% if user_demands %}
+                    <ul>
+                        {% for demand in user_demands %}
+                        <li>
+                        <strong>Projeto:</strong> {{ user.project }} - 
+                        <strong>Objetivo:</strong> {{ user.objective }} <br>
+                        <strong>Título da Demanda:</strong> {{ demand.title }} - 
+                        <strong>Descrição:</strong> {{ demand.description }} - 
+                        <strong>Status da Demanda:</strong> {{ demand.status }} - 
+                        <strong>Região:</strong> {{ demand.region }} - 
+                        <strong>Nome do Responsável:</strong> {{ user.name }} - 
+                        <strong>Número do Responsável:</strong> {{ user.phone }} - 
+                        <strong>E-mail do Responsável:</strong> {{user.email}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Você não tem nenhuma demanda no momento.</p>
+        {% endif %}
+            </div>
+        </div>
+
     </div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+    
 </body>
 </html>
+
+{% endblock %}
