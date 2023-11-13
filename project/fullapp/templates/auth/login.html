@@ -25,7 +25,22 @@
                 width: 100%;
                 margin-top: 122px;
                 padding: 20px 0;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
+
+            .loginbutton {
+                margin-top: 20px;
+                background: inherit;
+                background-color: #FC9FB8;
+                background-image: url('{% static "img/login.png" %}');
+                background-repeat: no-repeat;
+                background-position: 10px center;
+                
+            }
+
 
         }
     </style>
@@ -50,11 +65,11 @@
 
     <form method="post" action="{% url 'sign-in' %}">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Usuário" required>
-        <input type="password" name="password" placeholder="Senha" required>
+        <input  type="text" name="username" placeholder="Usuário" required >
+        <input style = "margin-top: 18px;" type="password" name="password" placeholder="Senha" required>
         <button type="submit" class="loginbutton">Entrar</button>
     </form>
-
+    
 </body>
 
 </html>

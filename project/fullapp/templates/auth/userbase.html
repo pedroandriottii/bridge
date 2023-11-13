@@ -17,18 +17,21 @@
 
         @media only screen and (max-width: 600px) {
             
-            .loginbutton {
-                background: #FC9FB8 url('{% static "img/login.png" %}') no-repeat 10px center;
-                text-align: center;
-                font: bold 16px 'Poppins';
+            
+            button {
+                background-color: #FC9FB8;
+                font-family: 'Poppins', sans-serif;
+                font-weight: bold;
+                font-size: 16px;
                 color: #fff;
                 padding: 10px 40px;
                 width: auto;
                 display: block;
-                margin: 22px auto 0;
                 border-radius: 10px;
                 height: 48px;
-            }/* parece que os botoes seguem formatacao quase identica. teremos de generalizar mais essa classe*/
+            }
+
+            /* parece que os botoes seguem formatacao quase identica. teremos de generalizar mais essa classe*/
 
             .wrapper {
                 width: 1000px;
@@ -60,8 +63,8 @@
             }
             
             form input {
-                width: 100%;
-                height: 48px;
+                width: 80%;
+                height: 58px;
                 border-radius: 10px;
                 padding: 0 12px ;
                 
