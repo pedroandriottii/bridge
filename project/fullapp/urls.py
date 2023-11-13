@@ -4,12 +4,13 @@ from .views import signin, signup, demands, home, add_embassador, add_manager, l
 
 urlpatterns = [
   path('signup/', signup, name="sign-up"),
+  path('signin/', signin, name="sign-in"),
+  path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+
   path('home/', home, name="home"),
   path('manager/add/', add_manager, name="add-manager"),
   path('demands/', demands, name="demands"),
   path('embassador/add/', add_embassador, name="add-embassador"),
-  path('signin/', signin, name="sign-in"),
-  path('logout/', auth_views.LogoutView.as_view(), name='logout'),
   path('demand/create/', demand_create, name='demand-create'),
   path('mydemands/', my_demands, name='my-demands'),
   path('', index, name="index"),
