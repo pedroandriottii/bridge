@@ -8,48 +8,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/loginstyle.css' %}">
     <style>
-        @media only screen and (max-width: 600px) {
-
-            input::placeholder {
-                color: #888;
-                /* You can adjust the color */
-                font-family: 'Poppins', sans-serif;
-                text-align: left;
-                vertical-align: top;
-                /* Align the text to the top */
-            }
-            
-            form {
-                color: #fff;
-                width: 100%;
-                margin-top: 122px;
-                padding: 20px 0;
-                display:flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .loginbutton {
-                margin-top: 20px;
-                background: inherit;
-                background-color: #FC9FB8;
-                background-image: url('{% static "img/login.png" %}');
-                background-repeat: no-repeat;
-                background-position: 10px center;
-                
-            }
-
-
-        }
+    .loginbutton {
+        background-image: url('{% static "img/login.png" %}');
+       
+    }
     </style>
-    {% load static %}
 </head>
 
 <body>
     <div class="logousuario">
         <div class="logobridge">
+            
             <img id="logo" src="{% static 'img/logousuario.png' %}" alt="logo do produto bridge">
             <p class="usuarios">Usuários</p>
         </div>
@@ -67,7 +38,9 @@
         {% csrf_token %}
         <input  type="text" name="username" placeholder="Usuário" required >
         <input style = "margin-top: 18px;" type="password" name="password" placeholder="Senha" required>
-        <button type="submit" class="loginbutton">Entrar</button>
+        <button type="submit" class="loginbutton" >Entrar</button>
+
+
     </form>
     
 </body>

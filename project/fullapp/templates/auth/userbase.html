@@ -4,92 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        @media only screen and (max-width: 600px) {
-            
-            
-            button {
-                background-color: #FC9FB8;
-                font-family: 'Poppins', sans-serif;
-                font-weight: bold;
-                font-size: 16px;
-                color: #fff;
-                padding: 10px 40px;
-                width: auto;
-                display: block;
-                border-radius: 10px;
-                height: 48px;
-            }
-
-            /* parece que os botoes seguem formatacao quase identica. teremos de generalizar mais essa classe*/
-
-            .wrapper {
-                width: 1000px;
-                margin: 0 auto; 
-            }
-            
-            .logousuario {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 88px;
-            
-      
-            }
-
-            .logousuario .logobridge {
-                position : relative;
-               
-            }
-
-            .logousuario .logobridge .usuarios {
-                position : absolute;
-                color: #FC9FB8; 
-                display : block;
-                top: 40px;
-                font-weight: bold;
-                
-            }
-            
-            form input {
-                width: 80%;
-                height: 58px;
-                border-radius: 10px;
-                padding: 0 12px ;
-                
-            }
-        
-    }
-
-        body{
-            font-family: 'Poppins', sans-serif;
-            background-color: #003132;;
-            
-        }
-
-        h2,h3,h4,h5,h6 {
-            color: #fff;
-        }
-
-        p {
-            color: #fff;
-           
-        }
-
-
-
-    </style>
+   
+    <link rel="stylesheet" href="{% static 'styles/mobilestyle.css' %}">
+   
 </head>
 <body>
     <link rel="preconnect" href="https://fonts.googleapis.com">
