@@ -37,11 +37,11 @@
         <form method="post" action="{% url 'sign-in' %}" class="flex flex-col items-center gap-[30px]">
             {% csrf_token %}
             <div class="relative">
-                <label for="username" class="absolute top-2 left-3 text-[#A3A3A3] text-sm">Usuário</label>
+                <label for="username" class="absolute top-2 font-bold left-3 text-[#A3A3A3] text-sm">Usuário</label>
                 <input class="border-2 h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]" type="text " name="username"required>
             </div>
             <div class="relative">
-                <label for="password" class="absolute top-2 left-3 text-[#A3A3A3] text-sm">Senha</label>
+                <label for="password" class="absolute top-2 font-bold left-3 text-[#A3A3A3] text-sm">Senha</label>
                 <input class="border-2 h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]" type="password" name="password"  required>
             </div>
             <button type="submit" class="" >
