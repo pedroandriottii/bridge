@@ -18,11 +18,10 @@
 </head>
 
 <body>
-    <div class="logousuario">
+    <div class="logo">
         <div class="logobridge">
             
-            <img id="logo" src="{% static 'img/logousuario.png' %}" alt="logo do produto bridge">
-            <p class="usuarios">Usuários</p>
+            <img id="logo" src="{% static 'img/logo.png' %}" alt="logo do produto bridge">
         </div>
     </div>
 
@@ -38,7 +37,9 @@
         {% csrf_token %}
         <input  type="text" name="username" placeholder="Usuário" required >
         <input style = "margin-top: 18px;" type="password" name="password" placeholder="Senha" required>
-        <button type="submit" class="loginbutton" >Entrar</button>
+        <button type="submit" class="loginbutton" >
+            <img src="{% static 'img/btnaprovar.png' %}" alt="Entrar">
+        </button>
 
 
     </form>

@@ -10,7 +10,7 @@ body {
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: #003132;;
+    background-color: #F9F9F9;
     
 }
 
@@ -24,22 +24,13 @@ p {
 }
 
 
+
+
+
 @media only screen and (max-width: 600px) {
     
     
-    button {
-        background-color: #FC9FB8;
-        font-family: 'Poppins', sans-serif;
-        font-weight: bold;
-        font-size: 16px;
-        color: #fff;
-        padding: 10px 40px;
-        width: auto;
-        display: block;
-        border-radius: 10px;
-        height: 48px;
-    }
-
+    
     /* parece que os botoes seguem formatacao quase identica. teremos de generalizar mais essa classe*/
 
     .wrapper {
@@ -47,37 +38,6 @@ p {
         margin: 0 auto; 
     }
     
-    .logousuario {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 88px;
-    
-
-    }
-
-    .logousuario .logobridge {
-        position : relative;
-       
-    }
-
-    .logousuario .logobridge .usuarios {
-        position : absolute;
-        color: #FC9FB8; 
-        display : block;
-        top: 40px;
-        font-weight: bold;
-        
-    }
-    
-    form input {
-        width: 80%;
-        height: 58px;
-        border-radius: 10px;
-        padding: 0 12px ;
-        
-    }
-
+  
 }
 
