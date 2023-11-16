@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm
 from .models import Demand, StatusEnum
+from .mediators import DemandMediator
 
 def signup(request):
   if request.method == 'POST':
@@ -180,7 +181,9 @@ def demands(request):
   if current_user.role != 1:
     return redirect('home')
   
-  return render(request, 'management/demands.html')
+  demands = DemandMediator.get_demands()
+  
+  return render(request, 'management/demands.html', demands)
 
 def triagem(request):
     current_user = request.user
