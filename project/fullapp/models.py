@@ -75,7 +75,7 @@ class Demand(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
-    status = models.CharField(choices=get_choices(StatusEnum), default=StatusEnum.LOOKING_FOR_DONORS, max_length=255, null=True, blank=True)
+    status = models.CharField(choices=get_choices(StatusEnum), default=StatusEnum.IN_ANALISYS, max_length=255, null=True, blank=True)
     region = models.CharField(choices=get_choices(RegionEnum), default=RegionEnum.PERNAMBUCO, max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 

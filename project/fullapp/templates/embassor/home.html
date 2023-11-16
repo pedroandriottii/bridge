@@ -13,6 +13,8 @@
                 <button type="submit">Logout</button>
             </form>
             <a href="{% url 'demands_by_region' %}">Acompanhe suas demandas</a>
+            <a href="{% url 'triagem' %}">Fazer Triagem</a>
+
         {% else %}
             <a href="{% url 'sign-in' %}">Login</a>
             <a href="{% url 'sign-up' %}">Signup</a>

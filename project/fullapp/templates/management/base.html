@@ -42,10 +42,10 @@
           <img src="{% static 'img/expand_more.png' %}" alt="logo do produto bridge" />
 
           <div id="dropdown" class="hidden absolute mt-8 top-0 left-1 right-0 flex flex-col gap-1 ">
-            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href="/embassador/add">
+            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href={% url 'signup_user2'%}>
               Embaixador
             </a>
-            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href="/manager/add">
+            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href={% url 'signup_user3'%}>
               Gestor
             </a>
           </div>

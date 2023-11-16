@@ -57,7 +57,7 @@ def signin(request):
     user = authenticate(request, username=username, password=password)
 
     if user is not None:
-      if user.role in [2, 3]:
+      if user.role in [1, 2, 3]:
         login(request, user)
         messages.success(request, 'Login bem-sucedido.')
         return redirect('home')  
@@ -120,8 +120,7 @@ def home(request):
     return render(request, 'embassor/home.html')
   else:
     user_demands_concluded = Demand.objects.filter(user=request.user, status=StatusEnum.CONCLUDED)
-    user_demands_in_analysis = Demand.objects.filter(user=request.user, status=StatusEnum.LOOKING_FOR_DONORS)
-
+    user_demands_in_analysis = Demand.objects.filter(user=request.user).exclude(status=StatusEnum.CONCLUDED)
     return render(request, "usuario/home.html", {
        'concluded_demands': user_demands_concluded,
        'in_analysis_demands': user_demands_in_analysis
@@ -165,9 +164,9 @@ def demands_by_region(request):
     current_user = request.user
 
     if current_user.role == 1:
-        region_demands = Demand.objects.all()
+        region_demands = Demand.objects.exclude(status__in=[StatusEnum.REJECTED, StatusEnum.DEACTIVATED])
     elif current_user.role == 2:
-        region_demands = Demand.objects.filter(region=current_user.region)
+        region_demands = Demand.objects.filter(region=current_user.region).exclude(status__in=[StatusEnum.REJECTED, StatusEnum.DEACTIVATED, StatusEnum.IN_ANALISYS])
     else:
         return redirect('home')
 
@@ -182,3 +181,56 @@ def demands(request):
     return redirect('home')
   
   return render(request, 'management/demands.html')
+
+def triagem(request):
+    current_user = request.user
+
+    if current_user.role != 2:
+        return redirect('home')
+
+    demands = Demand.objects.filter(status=StatusEnum.IN_ANALISYS, region=current_user.region)
+
+    return render(request, 'embassor/triagem.html', {'demands': demands})
+
+def aprovar_triagem(request, demand_id):
+    current_user = request.user
+
+    if current_user.role != 2:
+        return redirect('home')
+    try:
+        demand = Demand.objects.get(id=demand_id)
+
+        if demand.status == StatusEnum.IN_ANALISYS and demand.region == current_user.region:
+            demand.status = StatusEnum.APPROVED
+            demand.save()
+
+            messages.success(request, 'Triagem aprovada com sucesso!')
+        else:
+            messages.error(request, 'Não é possível aprovar a triagem para esta demanda.')
+
+    except Demand.DoesNotExist:
+        messages.error(request, 'Demanda não encontrada.')
+
+    return redirect('triagem')
+
+def rejeitar_triagem(request, demand_id):
+  current_user = request.user
+
+  if current_user.role != 2:
+      return redirect('home')
+
+  try:
+      demand = Demand.objects.get(id=demand_id)
+
+      if demand.status == StatusEnum.IN_ANALISYS and demand.region == current_user.region:
+          demand.status = StatusEnum.REJECTED
+          demand.save()
+
+          messages.success(request, 'Triagem rejeitada com sucesso!')
+      else:
+          messages.error(request, 'Não é possível rejeitar a triagem para esta demanda.')
+
+  except Demand.DoesNotExist:
+      messages.error(request, 'Demanda não encontrada.')
+
+  return redirect('triagem')

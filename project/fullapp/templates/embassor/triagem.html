@@ -1,0 +1,31 @@
+<!-- triagem.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triagem</title>
+</head>
+<body>
+    <h1>Triagem de Demandas</h1>
+
+    {% if demands %}
+        <ul>
+            {% for demand in demands %}
+                <li>
+                    <strong>ID:</strong> {{ demand.id }}<br>
+                    <strong>Título:</strong> {{ demand.title }}<br>
+                    <strong>Descrição:</strong> {{ demand.description }}<br>
+                    <a href="{% url 'aprovar_triagem' demand.id %}">Aprovar Triagem</a>
+                    <a href="{% url 'rejeitar_triagem' demand.id %}">Rejeitar Triagem</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma demanda em análise no momento.</p>
+    {% endif %}
+
+</body>
+</html>
