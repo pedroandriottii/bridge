@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm
+from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm, DemandStatusForm
 from .models import Demand, StatusEnum, RegionEnum
 from .mediators import DemandMediator
 from django.urls import reverse
+from datetime import timedelta
 
 def search(request):
   if request.method == 'POST':
@@ -33,37 +34,21 @@ def signup(request):
     form = SignupForm()
   return render(request, 'auth/signup.html', {'form': form})
 
-def signup_user2(request):
-    if request.method == 'POST':
-        form = UserSignupForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.role = 2
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            login(request, user)
+# def signup_user3(request):
+#     if request.method == 'POST':
+#         form = AdminSignupForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.role = 1
+#             user.set_password(form.cleaned_data['password'])
+#             user.save()
+#             login(request, user)
 
-            return redirect('home')  
-    else:
-        form = UserSignupForm()
+#             return redirect('home')  
+#     else:
+#         form = AdminSignupForm()
 
-    return render(request, 'auth/signup_user2.html', {'form': form})
-
-def signup_user3(request):
-    if request.method == 'POST':
-        form = AdminSignupForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.role = 1
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            login(request, user)
-
-            return redirect('home')  
-    else:
-        form = AdminSignupForm()
-
-    return render(request, 'auth/signup_user3.html', {'form': form})
+#     return render(request, 'auth/signup_user3.html', {'form': form})
 
 def signin(request):
   if request.method == 'POST':
@@ -176,18 +161,6 @@ def demand_create(request):
     return redirect('home')
 
 @login_required
-def my_demands(request):
-  current_user = request.user
-  if current_user.role == 3:
-    if request.user.is_authenticated:
-        user_demands = Demand.objects.filter(user=request.user)
-        return render(request, 'usuario/my_demands.html', {'user_demands': user_demands})
-    else:
-        return render(request, 'usuario/my_demands.html', {'user_demands': None})
-  else:
-    return redirect('home')
-
-@login_required
 def demands_by_region(request):
     current_user = request.user
 
@@ -211,6 +184,19 @@ def demands(request):
   demands = DemandMediator.get_demands()
   
   return render(request, 'management/demands.html', demands)
+
+def demand_detail(request, demand_id):
+    demand = get_object_or_404(Demand, id=demand_id)
+    
+    if request.method == 'POST':
+        form = DemandStatusForm(request.POST, instance=demand)
+        if form.is_valid():
+            form.save()
+            return redirect('demand_detail', demand_id=demand.id)
+    else:
+        form = DemandStatusForm(instance=demand)
+
+    return render(request, 'embassor/demand_detail.html', {'demand': demand, 'form': form})
 
 def triagem(request):
     current_user = request.user

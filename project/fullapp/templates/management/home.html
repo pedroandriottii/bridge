@@ -5,10 +5,6 @@
 {% block content %}
 <div class="flex flex-col mt-8 gap-7">
   <h1 class="font-bold text-2xl">Olá, {{ request.user.username }}!</h1>
-  <form method="post" action="{% url 'logout' %}" style="display: inline;">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
 
   <div class="flex w-full justify-between items-center">
     <span class="text-sm">Demandas com prazo máximo</span>
@@ -18,7 +14,7 @@
 
   <div class="grid grid-cols-3 gap-6">
     <div class="p-4 rounded-[10px] bg-[#F4AB2B]/70">
-      <h2>Solicitação de algoxxxxxxx</h2>
+      <h2>Solicitação de algo</h2>
 
       <span class="block mt-3">Nome do projeto</span>
 

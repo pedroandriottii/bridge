@@ -31,14 +31,15 @@ class RegionEnum:
     TOCANTINS = 'Tocantins'
 
 class StatusEnum:
-    REJECTED = 'Rejected'
-    LOOKING_FOR_DONORS = 'Looking for donors'
-    IN_ANALISYS = 'In analisys'
-    APPROVED = 'Approved'
-    DONORS_FOUND = 'Donors found'
-    EXITED = 'Exited'
-    CONCLUDED = 'Concluded'
-    DEACTIVATED = 'Deactivated'
+    REJECTED = 'Reprovado'
+    LOOKING_FOR_DONORS = 'Buscando Doadores'
+    IN_ANALISYS = 'Em análise'
+    APPROVED = 'Aprovado'
+    DONORS_FOUND = 'Doador Atribuido'
+    EXITED = 'Cancelado'
+    CONCLUDED = 'Concluido'
+    DEACTIVATED = 'Desativado'
+    
 
 def get_choices(constants_class: any) -> list[tuple[str, str]]:
     return [
@@ -78,6 +79,7 @@ class Demand(models.Model):
     status = models.CharField(choices=get_choices(StatusEnum), default=StatusEnum.IN_ANALISYS, max_length=255, null=True, blank=True)
     region = models.CharField(choices=get_choices(RegionEnum), default=RegionEnum.PERNAMBUCO, max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

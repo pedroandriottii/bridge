@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from .models import User, Demand
+from .models import User, Demand, StatusEnum, RegionEnum, get_choices
 
 INPUT_CLASSES = 'w-full mt-2 px-4 py-2 rounded-xl bg-[#FDFDFD] border border-[#D9D9D9]'
 
@@ -93,3 +93,10 @@ class EmbassadorSignupForm(forms.ModelForm):
         'class': INPUT_CLASSES
       })
     }
+
+class DemandStatusForm(forms.ModelForm):
+    status = forms.ChoiceField(choices=get_choices(StatusEnum))
+
+    class Meta:
+        model = Demand
+        fields = ['status']

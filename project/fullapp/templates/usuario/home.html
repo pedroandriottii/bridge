@@ -25,7 +25,7 @@
                     <div class="flex items-center justify-between">
                         <div class="bg-[#D9D9D9] text-white flex flex-col rounded-lg p-1">
                             <span class="text-xs">Prazo estimado</span>
-                            <span class="text-sm">10/12/1233</span>
+                            <span class="text-sm">{{ demand.created_at }}</span>
                         </div>
 
                         <span class="block py-1 px-2 bg-[#F59FB8] text-xs text-white rounded-full">{{ demand.status }}</span>
@@ -53,10 +53,10 @@
                     <div class="flex items-center justify-between">
                         <div class="bg-[#D9D9D9] text-white flex flex-col rounded-lg p-1">
                             <span class="text-xs">Prazo estimado</span>
-                            <span class="text-sm">10/12/1233</span>
+                            <span class="text-sm">{{ demand.created_at}} </span>
                         </div>
 
-                        <span class="block py-1 px-2 bg-[#F59FB8] text-xs text-white rounded-full">Em análise</span>
+                        <span class="block py-1 px-2 bg-[#A7D9C7] text-xs text-white rounded-full">{{ demand.status }}</span>
                     </div>
                 </div>
             {% endfor %}
