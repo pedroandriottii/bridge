@@ -5,6 +5,20 @@ from django.contrib import messages
 from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm
 from .models import Demand, StatusEnum
 from .mediators import DemandMediator
+from django.urls import reverse
+
+def search(request):
+  if request.method == 'POST':
+    search = request.POST.get('search')
+
+    return redirect(reverse('search') + '?q=' + search)
+  else:
+    search = request.GET.get('q')
+
+    print(search)
+
+    return render(request, 'management/search.html')
+
 
 def signup(request):
   if request.method == 'POST':
