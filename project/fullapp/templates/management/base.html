@@ -22,7 +22,7 @@
 </head>
 <body class="bg-[#F9F9F9] h-full">
   <div class="flex h-full">
-    <aside class="fixed left-0 top-0 bottom-0 flex flex-col w-[200px] p-6 h-full">
+    <aside class="fixed left-0 top-0 bottom-0 flex flex-col justify-between w-[200px] p-6 h-full">
       <h1>Logo</h1>
 
       <nav class="flex-1 h-full flex-1 flex justify-center flex-col gap-4 mb-4">
@@ -43,7 +43,7 @@
           <img src="{% static 'img/expand_more.png' %}" alt="logo do produto bridge" />
 
           <div id="dropdown" class="hidden absolute mt-8 top-0 left-1 right-0 flex flex-col gap-1 ">
-            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href="/embassador/add">
+            <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href="/ambassador/add">
               Embaixador
             </a>
             <a class="text-start text-sm py-1 px-2 hover:text-white w-full hover:bg-[#003223] transition-colors rounded-lg overflow-hidden" href="/manager/add">
@@ -54,7 +54,7 @@
         </button>
       </nav>
 
-      <a href="/logout/" class="font-medium text-[#003223] absolute bottom-8 text-[20px] flex gap-1 items-center px-2">
+      <a href="/logout/" class="font-medium text-[#003223] text-[20px] flex gap-1 items-center px-2">
         <img id="icon" src="{% static 'img/logout.png' %}" class="w-4 h-4" alt="logo do produto bridge" />
         Sair
       </a>

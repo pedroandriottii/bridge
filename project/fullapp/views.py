@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm
-from .models import Demand, StatusEnum
+from .models import Demand, StatusEnum, RegionEnum
 from .mediators import DemandMediator
 from django.urls import reverse
 
@@ -106,7 +106,7 @@ def add_manager(request):
   return render(request, 'management/add-manager.html', { 'form': form })
 
 @login_required
-def add_embassador(request):
+def add_ambassador(request):
   current_user = request.user
 
   if current_user.role != 1:
@@ -121,9 +121,22 @@ def add_embassador(request):
         user.save()
         return redirect('home')  
   else:
+    arr = []
+
+    for key, value in RegionEnum.__dict__.items():
+       if value != 'fullapp.models' or value != 'None' or not(str(value).startswith("<")):
+        arr.append({
+            'label': value,
+            'value': key
+        })
+
+    arr.pop()
+    arr.pop()
+    arr.pop()
+    arr = arr[1:]
     form = EmbassadorSignupForm()
 
-  return render(request, 'management/add-embassador.html', { 'form': form })
+  return render(request, 'management/add-ambassador.html', { 'form': form, 'region_options': arr })
 
 @login_required
 def home(request):
