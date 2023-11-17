@@ -29,7 +29,7 @@ def signup(request):
       user = form.save()
       login(request, user)
       messages.success(request, f'Conta criada para {user.name}!')
-      return redirect("sign-in")
+      return redirect("home")
   else:
     form = SignupForm()
   return render(request, 'auth/signup.html', {'form': form})

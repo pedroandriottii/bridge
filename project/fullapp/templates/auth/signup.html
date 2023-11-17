@@ -1,27 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-screen">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <title>Signup</title>
 </head>
 <body>
-    <h2>Signup</h2>
-    
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <form method="post" action="{% url 'sign-up' %}">
+    <form method="post" class="h-full">
         {% csrf_token %}
-        
-        {{ form.as_p }}
-
-        <button type="submit">Signup</button>
+        <div id="step1" class="h-screen box-border px-8 py-8">
+            <div class="h-full flex flex-col justify-between ">
+                <div class="flex flex-col gap-16 font-poppins">
+                    <p class="self-end ">X</p>
+                    <div class="flex gap-1">
+                        <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                        <span class="h-1 w-[33%] rounded-xl bg-[#D9D9D9]"></span>
+                        <span class="h-1 w-[33%] rounded-xl bg-[#D9D9D9]"></span>
+                    </div>
+                </div>
+                <div class="flex flex-col w-full max-w-[280px] self-center font-poppins">
+                    <h2 class="mb-5 font-bold text-[24px] ">Olá!</h2>
+                    <p class="mb-5 text-[16px] font-medium">Bem vindo à solicitação de projetos dos <span class="text-[#80CCB1] text-[16px] font-bold">Caçadores de Bons Exemplos!</span></p>
+                    <p class="mb-10 text-[16px] font-medium">Preencha os campos abaixo para cadastrar seu projeto e depois você poderá <span class="text-[#F59FB8] text-[16px] font-bold">enviar sua solicitação!</span></p>
+                    <button class="bg-[#F59FB8] rounded-md self-center w-32 h-10 text-white font-bold text-sm flex justify-center items-center gap-2" onclick="nextStep(2)">
+                        <span>></span>
+                        <p>Próximo</p>
+                    </button>
+                </div>
+                <div class="self-center w-[120px]"><img src="../../static/img/logo.png" alt=""></div>
+            </div>
+        </div>
+    
+        <div id="step2" style="display:none;">
+            <div id="step1" class="h-screen box-border px-8 py-8">
+                <div class="h-full flex flex-col justify-between ">
+                    <div class="flex flex-col gap-16 font-poppins">
+                        <button class="self-start" onclick="previousStep(1)"><</button>
+                        <div class="flex gap-1">
+                            <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                            <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                            <span class="h-1 w-[33%] rounded-xl bg-[#D9D9D9]"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 w-full max-w-[280px] self-center font-poppins">
+                        <div class="nt-form">{{ form.project.label_tag }}{{ form.project }} </div>
+                        <div class="nt-form">{{ form.objective.label_tag }}{{ form.objective }} </div>
+                        <div class="nt-form">{{ form.region.label_tag }}{{ form.region }} </div>
+                        <div class="relative">
+                            <label for="cidade" class="absolute top-2  left-3 text-[#A4A4A4] text-sm">Cidade</label>
+                            <input class="border-2 w-full h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]" type="text " name="cidade">
+                        </div>
+                        <div class="relative">
+                            <label for="endereco" class="absolute top-2  left-3 text-[#A4A4A4] text-sm">Endereço</label>
+                            <input class="border-2 w-full h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]" type="text " name="endereco">
+                        </div>
+                        <button class="bg-[#F59FB8] rounded-md self-center w-32 h-10 text-white font-bold text-sm flex justify-center items-center gap-2" onclick="nextStep(3)">
+                            <span>></span>
+                            <p>Próximo</p>
+                        </button>
+                    </div>
+                    <div class="self-center w-[120px]"><img src="../../static/img/logo.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Etapa 3 -->
+        <div id="step3" style="display:none;">
+            <div id="step1" class="h-screen box-border px-8 py-8">
+                <div class="h-full flex flex-col justify-between ">
+                    <div class="flex flex-col gap-16 font-poppins">
+                        <button class="self-start" onclick="previousStep(2)"><</button>
+                        <div class="flex gap-1">
+                            <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                            <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                            <span class="h-1 w-[33%] rounded-xl bg-[#003223]"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 w-full max-w-[280px] self-center font-poppins">
+                        <div class="nt-form">{{ form.username.label_tag }}{{ form.username }}</div>
+                        <div class="nt-form">{{ form.password1.label_tag }}{{ form.password1 }}</div>
+                        <div class="nt-form">{{ form.password2.label_tag }}{{ form.password2 }}</div>
+                        <div class="nt-form">{{ form.name.label_tag }}{{ form.name }}</div>
+                        <div class="nt-form">{{ form.phone.label_tag }}{{ form.phone }}</div>
+                        <div class="nt-form">{{ form.email.label_tag }}{{ form.email }}</div>
+                        <button class="bg-[#A7D9C7] text-[#F9F9F9] rounded-md self-center w-[200px] h-10 text-white font-bold text-sm flex justify-center items-center gap-2" type="submit">
+                            <span>></span>
+                            <p>Registrar conta</p>
+                        </button>
+                    </div>
+                    <div class="self-center w-[120px]"><img src="../../static/img/logo.png" alt=""></div>
+                </div>
+            </div>
+        </div>
     </form>
+    
 </body>
 </html>
+<script>
+    function nextStep(step) {
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById('step' + i).style.display = i === step ? 'block' : 'none';
+        }
+    }
+
+    function previousStep(step) {
+        nextStep(step);
+    }
+
+</script>
+<!-- class="absolute top-2 font-bold left-3 text-[#A4A4A4] text-sm" -->
+<!-- border-2 w-full h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4] -->
+<style>
+    .nt-form {
+        position: relative;
+    }
+    .nt-form label {
+        position: absolute;
+        top: 4px;
+        left: 12px;
+        font-weight: bold;
+        color: #a3a3a3;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .nt-form input {
+        border: 2px solid #e5e7eb;
+        width: 100%;
+        height: 64px;
+        border-radius: 6px;
+        padding: 12px 8px;
+        padding-top: 20px;
+        box-sizing: border-box;
+        outline: none;
+    }
+    .nt-form input:focus {
+        border: 2px solid #A4A4A4;
+    }
+</style>
