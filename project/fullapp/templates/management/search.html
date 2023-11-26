@@ -13,30 +13,31 @@
       <div class="flex-1 h-[2px] bg-[#2D2D2D]"></div>
     </div>
 
+    {% for demand in search_results %}
     <div class="flex gap-3">
       <div class="p-2.5 border-[2px] border-[#F4AB2B]/50 rounded-lg flex flex-col gap-4">
         <div class="flex flex-col gap-3">
           <strong class="text-bas">Solicitação do projeto</strong>
-          <span>Nome do projeto</span>
+          <span>{{ demand.title }}</span>
         </div>
-
         <div class="grid grid-cols-2">
           <div class="flex items-center gap-1">
             <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
             <span class="text-[#787878]">
-              Região
+              {{ demand.region }}
             </span>
           </div>
           <div class="flex items-center gap-1">
             <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
             <span class="text-[#787878]">
-              Embaixador
+              {{ demand.user }}
             </span>
           </div>
         </div>
-
       </div>
     </div>
+    {% endfor %}
+
   </div>
 
   <div class="flex flex-col gap-4">

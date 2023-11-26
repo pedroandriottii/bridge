@@ -7,32 +7,36 @@ from .models import Demand, StatusEnum, RegionEnum
 from .mediators import DemandMediator
 from django.urls import reverse
 from datetime import timedelta
-
+from .mediators import SearchMediator, AuthMediator, ManagerMediator, UserMediator
+#done
 def search(request):
+  mediator = SearchMediator()
+
   if request.method == 'POST':
-    search = request.POST.get('search')
-
-    return redirect(reverse('search') + '?q=' + search)
+    search_query = request.POST.get('search')
+    return redirect(reverse('search') + '?q=' + search_query)
   else:
-    search = request.GET.get('q')
+    search_query = request.GET.get('q')
+    print(search_query)
+    search_results = mediator.perform_search(search_query)
+    return render(request, 'management/search.html', {'search_results': search_results})
 
-    print(search)
-
-    return render(request, 'management/search.html')
-
-
+#done
 def signup(request):
-  if request.method == 'POST':
-    form = SignupForm(request.POST)
+    mediator = SignupMediator()
 
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      messages.success(request, f'Conta criada para {user.name}!')
-      return redirect("home")
-  else:
-    form = SignupForm()
-  return render(request, 'auth/signup.html', {'form': form})
+    if request.method == 'POST':
+        user = mediator.signup_user(request.POST)
+        if user:
+            login(request, user)
+            messages.success(request, f'Conta criada para {user.name}!')
+            return redirect("home")
+        else:
+            form = SignupForm(request.POST) 
+    else:
+        form = SignupForm()
+
+    return render(request, 'auth/signup.html', {'form': form})
 
 # def signup_user3(request):
 #     if request.method == 'POST':
@@ -49,70 +53,68 @@ def signup(request):
 #         form = AdminSignupForm()
 
 #     return render(request, 'auth/signup_user3.html', {'form': form})
-
+#done
 def signin(request):
-  if request.method == 'POST':
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    if user is not None:
-      if user.role in [1, 2, 3]:
-        login(request, user)
-        messages.success(request, 'Login bem-sucedido.')
-        return redirect('home')  
-    else:
-      messages.error(request, 'Login inválido. Por favor, tente novamente.')
-  return render(request, 'auth/login.html')
+        mediator = AuthMediator()
+        user = mediator.signin(request, username, password)
 
-def logout(request):
-  logout(request)
-  messages.success(request, 'Logout bem-sucedido.')
-  return redirect('signin')
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login bem-sucedido.')
+            return redirect('home')
+        else:
+            messages.error(request, 'Login inválido. Por favor, tente novamente.')
 
+    return render(request, 'auth/login.html')
+#done
 @login_required
 def add_manager(request):
-  current_user = request.user
+    current_user = request.user
 
-  if current_user.role != 1:
-    return redirect("login")
+    if current_user.role != 1:
+        return redirect("login")
   
-  if request.method == 'POST':
-    form = AdminSignupForm(request.POST)
-    if form.is_valid():
-        user = form.save(commit=False)
-        user.role = 1
-        user.set_password(form.cleaned_data['password'])
-        user.save()
-        return redirect('home')  
-  else:
-    form = AdminSignupForm()
+    mediator = ManagerMediator()
 
-  return render(request, 'management/add-manager.html', { 'form': form })
+    if request.method == 'POST':
+        form = AdminSignupForm(request.POST)
+        user = mediator.add_manager(request.POST)
+        if user:
+            return redirect('home')
+        else:
+            form = AdminSignupForm(request.POST)
+    else:
+        form = AdminSignupForm()
 
+    return render(request, 'management/add-manager.html', {'form': form})
+#done
 @login_required
 def add_ambassador(request):
   current_user = request.user
+  arr = []
 
   if current_user.role != 1:
     return redirect("login")
-  
+
+  mediator = ManagerMediator()
+
   if request.method == 'POST':
     form = EmbassadorSignupForm(request.POST)
-    if form.is_valid():
-        user = form.save(commit=False)
-        user.role = 2
-        user.set_password(form.cleaned_data['password'])
-        user.save()
-        return redirect('home')  
+    user = mediator.add_ambassador(request.POST)
+    if user:
+      return redirect('home')
+    else:
+      form = EmbassadorSignupForm(request.POST) 
   else:
-    arr = []
-
     for key, value in RegionEnum.__dict__.items():
-       if value != 'fullapp.models' or value != 'None' or not(str(value).startswith("<")):
+      if value != 'fullapp.models' and value != 'None' and not str(value).startswith("<"):
         arr.append({
-            'label': value,
-            'value': key
+          'label': value,
+          'value': key
         })
 
     arr.pop()
@@ -121,7 +123,7 @@ def add_ambassador(request):
     arr = arr[1:]
     form = EmbassadorSignupForm()
 
-  return render(request, 'management/add-ambassador.html', { 'form': form, 'region_options': arr })
+  return render(request, 'management/add-ambassador.html', {'form': form, 'region_options': arr})
 
 @login_required
 def home(request):
@@ -141,24 +143,27 @@ def home(request):
 
 def index(request):
   return render(request, 'commons/index.html')
-
+  
+#done
 @login_required
 def demand_create(request):
-  current_user = request.user
-  if current_user.role == 3:
-    if request.method == 'POST':
-        form = DemandForm(request.POST)
-        if form.is_valid():
-            demand = form.save(commit=False)
-            demand.user = request.user  
-            demand.save()
-            return redirect('home')
-    else:
-        form = DemandForm()
+    current_user = request.user
+    if current_user.role == 3:
+        mediator = UserMediator()
 
-    return render(request, 'usuario/demand_create.html', {'form': form})
-  else:
-    return redirect('home')
+        if request.method == 'POST':
+            form = DemandForm(request.POST)
+            demand = mediator.create_demand(request.POST, request.user)
+            if demand:
+                return redirect('home')
+            else:
+                form = DemandForm(request.POST)  # Recria o formulário com os dados postados e erros
+        else:
+            form = DemandForm()
+
+        return render(request, 'usuario/demand_create.html', {'form': form})
+    else:
+        return redirect('home')
 
 @login_required
 def demands_by_region(request):
