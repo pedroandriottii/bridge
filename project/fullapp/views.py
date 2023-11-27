@@ -23,7 +23,8 @@ def search(request):
 
 def project_details(request, id):
     demand = Demand.objects.get(id=id)
-    demands = Demand.objects.filter(user=demand.user)
+    demands = Demand.objects.filter(status=StatusEnum.CONCLUDED, user =demand.user)
+
 
     print(demands)
 

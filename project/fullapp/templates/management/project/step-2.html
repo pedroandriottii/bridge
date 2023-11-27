@@ -57,6 +57,38 @@
 
   <div class="flex flex-col gap-3">
     <span>Demandas concluídas</span>
+    {% if demands %}
+    <div class="flex overflow-hidden gap-3">
+      {% for item in demands %}
+        <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[340px]">
+          <strong class="text-lg">{{ item.title }}</strong>
+          <span>{{ item.user.project }}</span>
+
+          <div class="flex justify-between">
+            <div class="flex items-center gap-1">
+              <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+              <span class="text-[#787878]">
+                {{ item.region }}
+              </span>
+            </div>
+            <div class="flex items-center gap-1">
+              <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+              <span class="text-[#787878]">
+                {{ item.user }}
+              </span>
+            </div>
+          </div>
+
+          <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
+            <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
+            <span class="text-white text-sm">10/10/2010</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <span>Não tem demandas concluídas.</span>
+  {% endif %}
 
     <div class="flex overflow-hidden gap-3">
       <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[340px]">
