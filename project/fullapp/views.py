@@ -50,15 +50,18 @@ def project_details(request, id):
         return render(request, 'management/project/step-1.html', {
            'form': form,
            'demand': demand,
-           'ambassadors': ambassadors
+           'ambassadors': ambassadors,
+           'demands': demands
         })
     elif demand.status == 'Doador Atribuido':
         return render(request, 'management/project/step-2.html', {
            'demand': demand,
+           'demands': demands
         })
     else:
         return render(request, 'management/project/step-3.html', {
-            'demand': demand
+            'demand': demand,
+            'demands': demands
         })
 
 #done

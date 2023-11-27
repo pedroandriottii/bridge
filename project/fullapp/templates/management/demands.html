@@ -122,7 +122,7 @@
               <span>{{ item.user.project }}</span>
             </div>
 
-            <a href="" class="grid w-8 h-8 place-items-center rounded-full bg-[#F4AB2B] text-lg text-white font-bold">
+            <a href="{% url 'project_detail' item.id %}" class="grid w-8 h-8 place-items-center rounded-full bg-[#F4AB2B] text-lg text-white font-bold">
               >
             </a>
           </div>
