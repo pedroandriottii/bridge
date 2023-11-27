@@ -1,0 +1,104 @@
+{% extends 'management/base.html' %}
+{% load static %}
+
+{% block title %}Detalhes{% endblock %}
+
+{% block content %}
+<form method="post" class="flex flex-col mt-8 gap-16">
+  {% csrf_token %}
+
+  <header class="flex justify-between items-center">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-1">
+        <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+        <span class="text-[#787878]">
+          {{demand.region}}
+        </span>
+      </div>
+      <h1 class="font-bold text-2xl">{{ demand.title }}</h1>
+      <p>{{demand.description}}</p>
+    </div>
+    <button type="submit" id="change-status-button" class="p-2 bg-[#F4AB2B] rounded-md text-white font-bold">
+      Atualizar andamento
+    </button>
+  </header>
+
+  <div class="flex justify-between items-center">
+    <div class="flex flex-col gap-4">
+      <span>Andamento</span>
+
+      <div class="py-4 px-8 flex gap-2">
+        <div class="h-full">
+          <img src="{% static 'img/star_lines.png' %}" />
+        </div>
+        <div class="flex flex-col gap-4">
+          <strong class="px-2 bg-[#003223] rounded-full text-white">Procurando Doador</strong>
+          <span>Doador atríbuido</span>
+          <span>Em negociação</span>
+          <span>Concluído</span>
+        </div>
+      </div>    
+    </div>
+
+    <div class="flex flex-col gap-3">    
+      <div class="relative w-full">
+        <label for="user" class="absolute top-2 font-bold left-3 text-[#A3A3A3] text-sm">Região</label>
+        <select name="user" required class="border-2 w-full h-16 rounded-md px-2 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]">
+          {% for region in ambassadors %}
+            <option value="{{ region.id }}">
+              {{region.username}}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <!-- <div class="relative w-full">
+        <label for="user" class="absolute top-2 font-bold left-3 text-[#A3A3A3] text-sm">Nome de doador atribuído</label>
+        <input class="border-2 w-full h-16 rounded-md px-3 py-2 pt-5 box-border focus:outline-none focus:border-[#A4A4A4]" type="text" name="user" required>
+      </div> -->
+    </div>
+
+  </div>
+
+  <div class="flex flex-col gap-3">
+    <span>Demandas concluídas</span>
+
+    <div class="flex overflow-hidden gap-3">
+      <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[340px]">
+        <strong class="text-lg">Solicitação</strong>
+        <span>Nome do Projeto</span>
+
+        <div class="flex justify-between">
+          <div class="flex items-center gap-1">
+            <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+            <span class="text-[#787878]">
+              Região
+            </span>
+          </div>
+          <div class="flex items-center gap-1">
+            <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+            <span class="text-[#787878]">
+              Embaixador
+            </span>
+          </div>
+        </div>
+
+        <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
+          <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
+          <span class="text-white text-sm">10/10/2010</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  console.log("adeoidjaoidja")
+  const changeStatusButton = document.querySelector("#change-status-button")
+
+  changeStatusButton.addEventListener('click', () => {
+    console.log("teste")
+  })
+</script>
+{% endblock %}

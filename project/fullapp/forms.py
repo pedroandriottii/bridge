@@ -29,6 +29,14 @@ class DemandForm(forms.ModelForm):
           'region': forms.Select(attrs={'class': INPUT_CLASSES }),
         }
 
+class UpdateDemandForm(forms.ModelForm):
+    class Meta:
+        model = Demand
+        fields = ['user']
+        labels = {
+          'user': 'Usuário',
+        }
+
 class UserSignupForm(forms.ModelForm):
     class Meta:
         model = User

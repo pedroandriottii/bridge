@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm, DemandStatusForm
-from .models import Demand, StatusEnum, RegionEnum
+from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm, DemandStatusForm, UpdateDemandForm
+from .models import Demand, StatusEnum, RegionEnum, User
 from .mediators import DemandMediator
 from django.urls import reverse
 from datetime import timedelta
@@ -20,6 +20,45 @@ def search(request):
     print(search_query)
     search_results = mediator.perform_search(search_query)
     return render(request, 'management/search.html', {'search_results': search_results})
+
+def project_details(request, id):
+    demand = Demand.objects.get(id=id)
+    demands = Demand.objects.filter(user=demand.user)
+
+    print(demands)
+
+    if demand.status == 'Buscando Doadores':
+        form = UpdateDemandForm()
+
+        if request.method == 'POST':
+            form = UpdateDemandForm(request.POST, instance=demand)
+
+            if form.is_valid():
+                user = User.objects.get(username=form.cleaned_data['user'])
+                demand = form.save(commit=False)
+                demand.user = user
+                demand.status = StatusEnum.DONORS_FOUND
+                demand.save()
+
+                return redirect('demands')
+        else:
+            form = UpdateDemandForm()
+
+        ambassadors = User.objects.filter(role=2)
+
+        return render(request, 'management/project/step-1.html', {
+           'form': form,
+           'demand': demand,
+           'ambassadors': ambassadors
+        })
+    elif demand.status == 'Doador Atribuido':
+        return render(request, 'management/project/step-2.html', {
+           'demand': demand,
+        })
+    else:
+        return render(request, 'management/project/step-3.html', {
+            'demand': demand
+        })
 
 #done
 def signup(request):

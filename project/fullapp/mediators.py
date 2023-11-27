@@ -22,6 +22,9 @@ class DemandMediator:
       'donors_found': donors_found,
       'concluded': concluded
     }
+  
+  def get_project_details():
+    looking_for_donors = get_demands_by_status(status=StatusEnum.LOOKING_FOR_DONORS)
 
 class AuthMediator:
     def __init__(self):

@@ -33,8 +33,16 @@
     {% if looking_for_donors %}
       {% for item in looking_for_donors %}
         <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[300px]">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.user.project }}</span>
+          <div class="flex justify-between">
+            <div class="flex flex-col gap-3">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.user.project }}</span>
+            </div>
+
+            <a href="{% url 'project_detail' item.id %}" class="grid w-8 h-8 place-items-center rounded-full bg-[#F4AB2B] text-lg text-white font-bold">
+              >
+            </a>
+          </div>
 
           <div class="grid grid-cols-2">
             <div class="flex items-center gap-1">
@@ -61,15 +69,22 @@
       <div class="mt-5">Não tem cards nesse quadro.</div>
     {% endif %}
   </div>
-  <div class="min-w-[320px] w-full flex-col gap-4 mt-6">
+  <div class="min-w-[320px] w-full flex flex-col gap-4 mt-6">
     <span class="text-sm font-medium">Doador Atríbuido:</span>
 
     {% if donors_found %}
       {% for item in donors_found %}
         <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[300px]">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.user.project }}</span>
+          <div class="flex justify-between">
+            <div class="flex flex-col gap-3">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.user.project }}</span>
+            </div>
 
+            <a href="{% url 'project_detail' item.id %}" class="grid w-8 h-8 place-items-center rounded-full bg-[#F4AB2B] text-lg text-white font-bold">
+              >
+            </a>
+          </div>
           <div class="grid grid-cols-2">
             <div class="flex items-center gap-1">
               <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
@@ -101,9 +116,16 @@
     {% if concluded %}
       {% for item in concluded %}
         <div class="border-[2px] border-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[300px]">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.user.project }}</span>
+          <div class="flex justify-between">
+            <div class="flex flex-col gap-3">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.user.project }}</span>
+            </div>
 
+            <a href="" class="grid w-8 h-8 place-items-center rounded-full bg-[#F4AB2B] text-lg text-white font-bold">
+              >
+            </a>
+          </div>
           <div class="grid grid-cols-2">
             <div class="flex items-center gap-1">
               <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
