@@ -176,7 +176,19 @@ def home(request):
   if current_user.role == 1:
     return render(request, 'management/home.html')
   elif current_user.role == 2:
-    return render(request, 'embassor/home.html')
+    user_demands_in_analysis = Demand.objects.filter(status=StatusEnum.IN_ANALISYS, region=current_user.region)
+    approved_demands = Demand.objects.filter(status=StatusEnum.APPROVED, region=current_user.region)
+    looking_for_donors = Demand.objects.filter(status=StatusEnum.LOOKING_FOR_DONORS, region=current_user.region)
+    donor_found = Demand.objects.filter(status=StatusEnum.DONORS_FOUND, region=current_user.region)
+    user_demands_concluded = Demand.objects.filter(user=request.user, status=StatusEnum.CONCLUDED)
+
+    return render(request, 'embassor/home.html', {
+        'concluded_demands': user_demands_concluded,
+        'in_analysis_demands': user_demands_in_analysis,
+        'approved_demands': approved_demands,
+        'looking_for_donors': looking_for_donors,
+        'donor_found': donor_found
+    })
   else:
     user_demands_concluded = Demand.objects.filter(user=request.user, status=StatusEnum.CONCLUDED)
     user_demands_in_analysis = Demand.objects.filter(user=request.user).exclude(status=StatusEnum.CONCLUDED)
