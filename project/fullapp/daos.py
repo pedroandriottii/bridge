@@ -1,4 +1,4 @@
-from .models import Demand, User
+from .models import Demand
 from .forms import SignupForm, AdminSignupForm, DemandForm
 from django.contrib.auth import authenticate
 
@@ -7,14 +7,6 @@ def get_demands_by_status(status):
 
   return demand
 
-def get_project_info_by_user(user):
-  demands = Demand.objects.filter(user=user)
-  project = User.objects.filter(id=user)
-
-  return {
-    'demands': demands,
-    'project': project
-  }
 
 class SearchDAO:
   @staticmethod
@@ -57,3 +49,4 @@ class UserDAO:
       demand.save()
       return demand
     return None
+

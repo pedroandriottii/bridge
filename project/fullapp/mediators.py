@@ -31,7 +31,7 @@ class AuthMediator:
         self.auth_dao = AuthDAO()
 
     def signup_user(self, form_data):
-        return self.auth_dao.create_user(form_data)
+        return self.auth_dao.create_user(form_data, role=3)
 
     def signin(self, request, username, password):
         user = self.auth_dao.authenticate_user(request, username, password)

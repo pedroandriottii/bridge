@@ -66,7 +66,7 @@ def project_details(request, id):
 
 #done
 def signup(request):
-    mediator = SignupMediator()
+    mediator = AuthMediator()
 
     if request.method == 'POST':
         user = mediator.signup_user(request.POST)
