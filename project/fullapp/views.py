@@ -184,9 +184,6 @@ def home(request):
        'in_analysis_demands': user_demands_in_analysis
     })
 
-def index(request):
-  return render(request, 'commons/index.html')
-  
 #done
 @login_required
 def demand_create(request):
