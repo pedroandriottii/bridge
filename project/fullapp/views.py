@@ -295,3 +295,13 @@ def rejeitar_triagem(request, demand_id):
       messages.error(request, 'Demanda não encontrada.')
 
   return redirect('triagem')
+
+def feed(request):
+    current_user = request.user
+
+    if current_user.role != 2:
+        return redirect('home')
+
+    demands = Demand.objects.filter(status=StatusEnum.CONCLUDED)
+
+    return render(request, 'embassor/feed.html', {'demands': demands})
