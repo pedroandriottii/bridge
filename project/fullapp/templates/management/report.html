@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+</head>
+<body>
+<h1>Management Report</h1>
+
+<body>
+    <h1>Demand Report for {{ current_month }}/{{ current_year }}</h1>
+    <p>Completed Demands: {{ completed_demands }}</p>
+    <p>Open Demands: {{ open_demands }}</p>
+    <p>Pending Demands: {{ pending_demands }}</p>
+    <h2>Demands by Region:</h2>
+    <ul>
+        {% for region_data in demands_by_region %}
+            <li>{{ region_data.region }}: {{ region_data.count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
