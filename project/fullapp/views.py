@@ -2,11 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.db import models
 from .forms import SignupForm, DemandForm, UserSignupForm, AdminSignupForm, EmbassadorSignupForm, DemandStatusForm, UpdateDemandForm
 from .models import Demand, StatusEnum, RegionEnum, User
 from .mediators import DemandMediator
 from django.urls import reverse
-from datetime import timedelta
+from datetime import timedelta, datetime
 from .mediators import SearchMediator, AuthMediator, ManagerMediator, UserMediator
 #done
 def search(request):
@@ -307,3 +308,35 @@ def rejeitar_triagem(request, demand_id):
       messages.error(request, 'Demanda não encontrada.')
 
   return redirect('triagem')
+
+def feed(request):
+    current_user = request.user
+
+    if current_user.role != 2:
+        return redirect('home')
+
+    demands = Demand.objects.filter(status=StatusEnum.CONCLUDED)
+
+    return render(request, 'embassor/feed.html', {'demands': demands})
+
+def report(request):
+    current_user = request.user
+    current_month = datetime.now().month
+
+    excluded_statuses = ['CONCLUDED', 'EXITED', 'DEACTIVATED', 'IN_ANALISYS']
+    excluded_statuses_open = ['EXITED', 'DEACTIVATED', 'IN_ANALISYS']
+
+    if current_user.role != 1:
+        return redirect('home')
+
+    completed_demands = Demand.objects.filter(status=StatusEnum.CONCLUDED, created_at__month=current_month).count()
+    pending_demands = Demand.objects.exclude(status__in=excluded_statuses, created_at__month=current_month).count()
+    open_demands = Demand.objects.exclude(status__in=excluded_statuses_open, created_at__month=current_month).count()
+    demands_by_region = Demand.objects.exclude(status__in=excluded_statuses_open, created_at__month=current_month).values('region').annotate(count=models.Count('id'))
+
+    return render(request, 'management/report.html', {
+        'completed_demands': completed_demands,
+        'pending_demands': pending_demands,
+        'open_demands': open_demands,
+        'demands_by_region': demands_by_region
+    })
