@@ -1,0 +1,26 @@
+<nav class="fixed w-full bg-[#F2F7F5] bottom-0 flex px-8 py-2 justify-between">
+    <a href="{% url 'home'%}">
+      <div class="flex flex-col items-center justify-center gap-1">
+        <img src="../../static/img/home.svg" alt="">
+        <p class="text-[12px]">inicio</p>
+      </div>
+    </a>
+    <a href="{% url 'feed'%}">
+      <div class="flex flex-col items-center justify-center gap-1">
+        <img src="../../static/img/feed.svg" alt="">
+        <p class="text-[12px]">Feed</p>
+      </div>
+    </a>
+    <a href="{% url 'triagem'%}">
+      <div class="flex flex-col items-center justify-center gap-1">
+        <img src="../../static/img/check_box.svg" alt="">
+        <p class="text-[12px]">Triagem</p>
+      </div>
+    </a>
+    <a href="">
+      <div class="flex flex-col items-center justify-center gap-1">
+        <img src="../../static/img/person.svg" alt="">
+        <p class="text-[12px]">Perfil</p>
+      </div>
+    </a>
+</nav>

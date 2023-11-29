@@ -82,21 +82,21 @@ def signup(request):
 
     return render(request, 'auth/signup.html', {'form': form})
 
-# def signup_user3(request):
-#     if request.method == 'POST':
-#         form = AdminSignupForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.role = 1
-#             user.set_password(form.cleaned_data['password'])
-#             user.save()
-#             login(request, user)
+def signup_user3(request):
+    if request.method == 'POST':
+        form = AdminSignupForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.role = 1
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
 
-#             return redirect('home')  
-#     else:
-#         form = AdminSignupForm()
+            return redirect('home')  
+    else:
+        form = AdminSignupForm()
 
-#     return render(request, 'auth/signup_user3.html', {'form': form})
+    return render(request, 'auth/signup_user3.html', {'form': form})
 #done
 def signin(request):
     if request.method == 'POST':

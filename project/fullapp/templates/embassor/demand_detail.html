@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Demand Detail</title>
 </head>
 <body>
@@ -13,21 +14,47 @@
         <img src="../../static/img/vetor.png" alt="">
         <p>{{ demand.region }}</p>
     </div>
-    <div class="title">
-        <h1>{{ demand.title }}</h1>
-        <h2>{{ demand.description }}</h2>
+    <div class="title mb-6">
+        <h1 class="font-bold text-[20px]">{{ demand.title }}</h1>
+        <h2 class="text-[16px]">{{ demand.description }}</h2>
         <p>Andamento</p>
     </div>
-    <div class="stage">
-        <img src="../../static/img/vetor2.png" alt="">
+    <div class="stage relative h-[140px]">
+        <img src="../../static/img/vetor2.png" alt="" class="absolute left-[40px]">
+        <div class="absolute left-[74px] flex flex-col gap-[22px]">
+            {% if demand.status == 'Buscando Doadores' %}
+            <p class="font-bold text-white bg-[#003223] px-2 py-2 rounded-md">Procurando doador</p>
+            {% else %}
+                <p>Procurando doador</p>
+            {% endif %}
+            
+            {% if demand.status == 'Doador Atribuido' %}
+                <p class="font-bold text-white bg-[#003223] px-2 py-2 rounded-md">Doador atribuído</p>
+            {% else %}
+                <p>Doador atribuído</p>
+            {% endif %}
+            
+            {% if demand.status == 'Em negociação' %}
+                <p class="font-bold text-white bg-[#003223] px-2 py-2 rounded-md">Em negociação</p>
+            {% else %}
+                <p>Em negociação</p>
+            {% endif %}
+            
+            {% if demand.status == 'Concluido' %}
+                <p class="font-bold text-white bg-[#003223] px-2 py-2 rounded-md">Concluído</p>
+            {% else %}
+                <p>Concluído</p>
+            {% endif %}
+
+        </div>
     </div>
-    <div class="contatos">
-        <h2>Contato do Projeto:</h2>
-        <p>{{ demand.user.name }}: {{ demand.user.phone }}</p>
-        <h2>Endereço</h2>
-        <p>XXXX</p>
-        <h2>Doadores atribuídos ao projeto</h2>
-        <p>XXXX</p>
+    <div class="contatos mt-10">
+        <h2 class="mb-1">Contato do Projeto:</h2>
+        <p class="mb-3">{{ demand.user.name }}: {{ demand.user.phone }}</p>
+        <h2 class="mb-1">Endereço</h2>
+        <p class="mb-3">XXXX</p>
+        <h2 class="mb-1">Doadores atribuídos ao projeto</h2>
+        <p >XXXX</p>
     </div>
     
     
@@ -35,10 +62,11 @@
     <form method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update Status</button>
+        <button class="button" type="submit">Atualizar</button>
     </form>
 </body>
 </html>
+
 <style>
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -83,64 +111,81 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
-    body{
-    background-color: #E1E6E4;
-    font-family: 'Poppins', sans-serif;
-    }
-    .back{
-        margin: 20px;
-        text-decoration: none;
-    }
-    .region{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+body{
+background-color: #A7D9C780;
+font-family: 'Poppins', sans-serif;
+}
+.back{
+    margin: 20px;
+    text-decoration: none;
+}
+.region{
+display: flex;
+align-items: center;
+justify-content: left;
+align-items: left;
+margin-left: 20px;
+gap: 10px;
+color: #787878;
+padding-bottom: 20px;
+}
+.title{
+display: flex;
+flex-direction: column;
+margin-left: 20px;
+justify-content: left;
+gap: 10px;
+}
+.title h1{
+    font-size: 20px;
+    font-style: bold;
+}
+.title h2{
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    padding-bottom: 10px;
+}
+.title p{
+    font-size: 12px;
+}
+
+.stage{
     display: flex;
     align-items: center;
-    justify-content: left;
-    align-items: left;
-    margin-left: 20px;
-    gap: 10px;
-    color: #787878;
-    padding-bottom: 20px;
-    }
-    .title{
+    justify-content: center;
+}
+
+.contatos{
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    justify-content: left;
-    gap: 10px;
-    }
-    .title h1{
-        font-size: 20px;
-        font-style: bold;
-    }
-    .title h2{
-        font-size: 16px;
-        font-weight: 500;
-        font-style: normal;
-        padding-bottom: 10px;
-    }
-    .title p{
-        font-size: 12px;
-    }
+    padding-left: 20px;
+}
+.contatos h2{
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+}
 
-    .stage{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .contatos{
-        display: flex;
-        flex-direction: column;
-        padding-left: 20px;
-    }
-    .contatos h2{
-        font-size: 12px;
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    .contatos p{
-        color: rgba(45, 45, 45, 0.50);
-    }
+.contatos p{
+    color: rgba(45, 45, 45, 0.50);
+}
+form {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+form p {
+    margin-bottom: 8px;
+}
+form .button {
+    width: 150px;
+    height: 32px;
+    border-radius: 12px;
+    background-color: #A7D9C7;
+    align-self: center;
+}
 </style>

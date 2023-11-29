@@ -36,6 +36,7 @@ class StatusEnum:
     IN_ANALISYS = 'Em análise'
     APPROVED = 'Aprovado'
     DONORS_FOUND = 'Doador Atribuido'
+    NEGOCIATION = 'Em negociação'
     EXITED = 'Cancelado'
     CONCLUDED = 'Concluido'
     DEACTIVATED = 'Desativado'

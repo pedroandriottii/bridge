@@ -7,7 +7,7 @@
 
 </head>
 <body class="h-screen">
-    <div id="navbar" class="h-screen bg-[#A7D9C780] px-5 pt-8 ">
+    <div id="navbar" class="h-screen bg-[#A7D9C780]/50 px-5 pt-8 ">
         <div class="flex items-center justify-between mb-10">
         <p class="font-bold text-[20px] " >Olá, {{ user.username }}!</p>
         <form method="post" action="{% url 'logout' %}" style="display: inline;">
@@ -19,14 +19,16 @@
         <h2 class="font-bold text-lg mb-4">Demandas</h2>
 
         <div class="flex overflow-x-auto gap-3 mb-7">
-            <!-- {% for demand in in_analysis_demands %}
+            {% for demand in in_analysis_demands %}
+            <a  href="{% url 'demand_detail' demand.id %}" >
                 <div class="w-[300px] h-[200px] bg-[#A7D9C7] rounded-[10px]">
                     <p></p>
                     <h1>titulo</h1>
                 </div>
+            </a>
             {% empty %}
                 vazio
-            {% endfor %} -->
+            {% endfor %}
             <div class="min-w-[340px] w-full px-5 py-4 h-[200px] bg-[#A7D9C7]/40 rounded-[10px]">
                 <div class="flex items-center justify-between mb-3">
                     <h2 class="font-bold text-lg">Solicitacao de algo</h2>
@@ -100,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <a href="{% url 'triagem' %}">Fazer Triagem</a>
     </div>
+    {% include "embassor/navbar.html" %}
 </body>
 </html>

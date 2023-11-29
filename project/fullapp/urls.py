@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import signin, search, project_details, signup, demands, home, add_ambassador, add_manager, logout, report, demand_create, demands_by_region, feed, triagem, aprovar_triagem, rejeitar_triagem, demand_detail
+from .views import signin, search, project_details, signup, demands, home, add_ambassador, add_manager, logout, report, demand_create, demands_by_region, feed, triagem, aprovar_triagem, rejeitar_triagem, demand_detail, signup_user3
 
 urlpatterns = [
   path('signup/', signup, name="sign-up"),
@@ -20,4 +20,5 @@ urlpatterns = [
   path('project/<int:id>/', project_details, name='project_detail'),
   path('feed/', feed, name='feed'),
   path('report/', report, name='report'),
+  path('signup3/', signup_user3, name='signup3'),
 ]
