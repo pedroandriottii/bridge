@@ -1,4 +1,4 @@
-from .daos import SearchDAO, get_demands_by_status, UserDAO
+from .daos import SearchDAO, get_demands_by_status, UserDAO,  AuthDAO
 from .models import StatusEnum
 
 class SearchMediator:
@@ -34,6 +34,8 @@ class UserMediator:
     return self.user_dao.create_demand(form_data, user)
 
 class ManagerMediator:
+    def __init__(self):
+      self.auth_dao = AuthDAO()
 
     def add_manager(self, form_data):
       return self.auth_dao.create_user(form_data, role=1)
