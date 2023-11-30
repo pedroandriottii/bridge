@@ -1,4 +1,4 @@
-from .daos import SearchDAO, get_demands_by_status, UserDAO, AuthDAO
+from .daos import SearchDAO, get_demands_by_status, UserDAO
 from .models import StatusEnum
 
 class SearchMediator:
@@ -26,19 +26,6 @@ class DemandMediator:
   def get_project_details():
     looking_for_donors = get_demands_by_status(status=StatusEnum.LOOKING_FOR_DONORS)
 
-class AuthMediator:
-    def __init__(self):
-        self.auth_dao = AuthDAO()
-
-    def signup_user(self, form_data):
-        return self.auth_dao.create_user(form_data, role=3)
-
-    def signin(self, request, username, password):
-        user = self.auth_dao.authenticate_user(request, username, password)
-        if user and user.role in [1, 2, 3]:
-            return user
-        return None
-
 class UserMediator:
   def __init__(self):
     self.user_dao = UserDAO()
@@ -47,8 +34,6 @@ class UserMediator:
     return self.user_dao.create_demand(form_data, user)
 
 class ManagerMediator:
-    def __init__(self):
-      self.auth_dao = AuthDAO()
 
     def add_manager(self, form_data):
       return self.auth_dao.create_user(form_data, role=1)
