@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-screen">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Feed</title>
 </head>
-<body>
-    <h1>Demands Feed</h1>
-    <ul>
+<body class="h-screen bg-[#A7D9C780]/50">
+    <div class="px-5 py-10">
+        <h1 class="font-bold text-[20px] mb-6">Feed</h1>
         {% for demand in demands %}
-            <li>{{ demand.title }} - {{ demand.description }}</li>
+            <div class="w-full bg-[#F9F9F9] rounded-lg p-4 mb-4">
+                <div class="flex items-center justify-between mb-2">
+                    <p class="text-[16px] font-bold">{{ demand.user.name }}</p>
+                    <p class="text[12px] text-[#2D2D2D80]">30/11/2023</p>
+                </div>
+                <div class="flex gap-12 mb-6">
+                    <div class="flex gap-2 items-center">
+                        <img src="../../static/img/star-yellow.png" alt="">
+                        {{ demand.region}}
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <img src="../../static/img/star-yellow.png" alt="">
+                        {{ demand.title}}
+                    </div>
+                </div>
+                <div class="w-full flex items-center justify-center mb-5">
+                    <img src="../../static/img/estrelinhas.svg" alt="">
+                </div>
+                <p class="text-[16px] text-center">Demanda "{{ demand.description }}" foi concluida</p>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
+    {% include "embassor/navbar.html" %}
 </body>
 </html>

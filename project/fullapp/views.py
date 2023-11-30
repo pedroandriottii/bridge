@@ -97,6 +97,7 @@ def signup_user3(request):
         form = AdminSignupForm()
 
     return render(request, 'auth/signup_user3.html', {'form': form})
+
 #done
 def signin(request):
     if request.method == 'POST':
