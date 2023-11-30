@@ -23,7 +23,7 @@
 <body class="bg-[#F9F9F9] h-full">
   <div class="flex h-full">
     <aside class="fixed left-0 top-0 bottom-0 flex flex-col justify-between w-[200px] p-6 h-full">
-      <h1>Logo</h1>
+      <img  src="{% static 'img/logo-big.png' %}" alt="Logo" class="w-[100px] h-8 mx-auto" />
 
       <nav class="flex-1 h-full flex-1 flex justify-center flex-col gap-4 mb-4">
         <a class="group flex items-center gap-2 py-1 px-2 rounded-md font-medium text-[#003223] text-[20px] hover:text-white w-full hover:bg-[#003223] transition-colors" href="/home">
@@ -34,10 +34,10 @@
           <img id="icon" src="{% static 'img/check_circle.png' %}" class="w-4 h-4 group-hover:invert group-hover:brightness-0" alt="logo do produto bridge" />
           Demandas
         </a>
-        <a class="group flex items-center gap-2 py-1 px-2 rounded-md font-medium text-[#003223] text-[20px] hover:text-white w-full hover:bg-[#003223] transition-colors" href="/report">
+        <!-- <a class="group flex items-center gap-2 py-1 px-2 rounded-md font-medium text-[#003223] text-[20px] hover:text-white w-full hover:bg-[#003223] transition-colors" href="/report">
           <img id="icon" src="{% static 'img/summarize.png' %}" class="w-4 h-4 group-hover:invert group-hover:brightness-0" alt="logo do produto bridge" />
           Relatórios
-        </a>
+        </a> -->
 
         <button id="open-button" class="flex gap-2 justify-between items-center relative py-1 px-2 rounded-md w-full transition-colors" href="">
           <img id="icon" src="{% static 'img/register.png' %}" class="w-4 h-4" alt="logo do produto bridge" />

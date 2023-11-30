@@ -7,6 +7,12 @@ def get_demands_by_status(status):
 
   return demand
 
+def get_demands_by_date(sort):
+  if sort == 'latest':
+    return Demand.objects.order_by('-created_at')[:3]
+  else:
+    return Demand.objects.order_by('created_at')
+
 
 class SearchDAO:
   @staticmethod

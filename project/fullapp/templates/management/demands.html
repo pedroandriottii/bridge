@@ -6,26 +6,40 @@
 {% block content %}
 <h1 class="text-xl font-bold mt-6">Demandas</h1>
 
-<div class="flex gap-8 overflow-x-auto">
+<div class="flex gap-4 overflow-x-auto">
   <div class="min-w-[320px] w-full flex flex-col gap-4 mt-6">
-    <span class="text-sm font-medium">Demandas com prazo máximo:</span>
+    <span class="text-sm font-medium">Demandas antigas:</span>
 
-    <div class="flex flex-col gap-4">
+    {% if oldest_demands %}
+      {% for item in oldest_demands %}
       <div class="border-[2px] border-[#F4AB2B]/50 bg-[#F4AB2B]/50 flex flex-col gap-3 p-4 relative rounded-lg w-[300px]">
-        <strong>Solicitação de algo</strong>
-        <span>Nome do projeto</span>
+        <strong>{{item.title}}</strong>
+        <span>{{item.user.project}}</span>
 
         <div class="grid grid-cols-2">
-          <span class="text-[#787878]">Região</span>
-          <span class="text-[#787878]">Embaixador</span>
+          <div class="flex items-center gap-1">
+            <img id="icon" src="{% static 'img/star-yellow.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+            <span class="text-[#787878]">
+              {{ item.region }}
+            </span>
+          </div>
+          <div class="flex items-center gap-1">
+            <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
+            <span class="text-[#787878]">
+              {{ item.user.name|slice:15 }}
+            </span>
+          </div>
         </div>
 
         <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
           <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
-          <span class="text-white text-sm">10/10/2010</span>
+          <span class="text-white text-sm">14/12/2023</span>
         </div>
       </div>
-    </div>
+      {% endfor %}
+    {% else %}
+      <div class="mt-5">Não tem cards nesse quadro.</div>
+    {% endif %}
   </div>
   <div class="min-w-[320px] w-full flex flex-col gap-4 mt-6">
     <span class="text-sm font-medium">Procurar Doador:</span>
@@ -54,14 +68,14 @@
             <div class="flex items-center gap-1">
               <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
               <span class="text-[#787878]">
-                {{ item.user.name }}
+                {{ item.user.name|slice:15 }}
               </span>
             </div>
           </div>
 
           <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
             <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
-            <span class="text-white text-sm">10/10/2010</span>
+            <span class="text-white text-sm">14/12/2023</span>
           </div>
         </div>
       {% endfor %}
@@ -95,14 +109,14 @@
             <div class="flex items-center gap-1">
               <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
               <span class="text-[#787878]">
-                {{ item.user.name }}
+                {{ item.user.name|slice:15 }}
               </span>
             </div>
           </div>
 
           <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
             <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
-            <span class="text-white text-sm">10/10/2010</span>
+            <span class="text-white text-sm">14/12/2023</span>
           </div>
         </div>
       {% endfor %}
@@ -136,14 +150,14 @@
             <div class="flex items-center gap-1">
               <img id="icon" src="{% static 'img/star-green.png' %}" class="w-4 h-4" alt="Ícone de relógio" />  
               <span class="text-[#787878]">
-                {{ item.user.name }}
+                {{ item.user.name|slice:15 }}
               </span>
             </div>
           </div>
 
           <div class="w-fit flex items-center gap-2 p-1 rounded-lg bg-[#F4AB2B]">
             <img id="icon" src="{% static 'img/clock.png' %}" class="w-4 h-4" alt="Ícone de relógio" />
-            <span class="text-white text-sm">10/10/2010</span>
+            <span class="text-white text-sm">14/12/2023</span>
           </div>
         </div>
       {% endfor %}

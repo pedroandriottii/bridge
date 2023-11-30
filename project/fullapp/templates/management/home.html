@@ -1,4 +1,5 @@
 {% extends 'management/base.html' %}
+{% load static %}
 
 {% block title %}Registre-se{% endblock %}
 
@@ -7,130 +8,71 @@
   <h1 class="font-bold text-2xl">Olá, {{ request.user.username }}!</h1>
 
   <div class="flex w-full justify-between items-center">
-    <span class="text-sm">Demandas com prazo máximo</span>
+    <span class="text-sm font-medium">Últimas demandas</span>
 
     <a href="/demands/" class="text-sm">Ver todos</a>
   </div>
 
-  <div class="grid grid-cols-3 gap-6">
-    <div class="p-4 rounded-[10px] bg-[#F4AB2B]/70">
-      <h2>Solicitação de algo</h2>
+  <div class="flex gap-6 overflow-x-auto">
+    {% for item in oldest_demands %}
+      <div class="p-4 min-w-[300px] rounded-[10px] bg-[#F4AB2B]/70">
+        <h2>{{item.title}}</h2>
 
-      <span class="block mt-3">Nome do projeto</span>
+        <span class="block mt-3">{{item.user.project}}</span>
 
-      <div class="flex gap-1 items-center my-4">
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-          <span>Região</span>
+        <div class="flex gap-1 items-center my-4">
+          <div class="flex gap-2 items-center">
+            <img src="../../static/img/star-green.png" alt="">
+            <span class="text-sm text-black/50 font-medium">
+              {{ item.region }}
+            </span>
+          </div>
+          <div class="flex gap-2 items-center">
+            <img src="../../static/img/star-green.png" alt="">
+            <span class="text-sm text-black/50 font-medium">
+              {{ item.user.name }}
+            </span>
+          </div>
         </div>
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-          <span>Região</span>
-        </div>
-      </div>
 
-      <div class="p-1 bg-[#F4AB2B] w-fit rounded-lg text-white">
-        Prazo estimado
-        <span></span>
-      </div>
-    </div>
-    <div class="p-4 rounded-[10px] bg-[#F4AB2B]/70">
-      <h2>Solicitação de algo</h2>
-
-      <span class="block mt-3">Nome do projeto</span>
-
-      <div class="flex gap-1 items-center my-4">
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-          <span>Região</span>
-        </div>
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-          <span>Região</span>
+        <div class="p-1 bg-[#F4AB2B] w-fit rounded-lg text-white">
+          Prazo estimado
+          <span></span>
         </div>
       </div>
-
-      <div class="p-1 bg-[#F4AB2B] w-fit rounded-lg text-white">
-        Prazo estimado
-        <span></span>
-      </div>
-    </div>
-    <div class="p-4 rounded-[10px] bg-[#F4AB2B]/70">
-      <h2>Solicitação de algo</h2>
-
-      <span class="block mt-3">Nome do projeto</span>
-
-      <div class="flex gap-1 items-center my-4">
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-          <span>Região</span>
-        </div>
-        <div class="flex items-center gap-1">
-          <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-          <span>Região</span>
-        </div>
-      </div>
-
-      <div class="p-1 bg-[#F4AB2B] w-fit rounded-lg text-white">
-        Prazo estimado
-        <span></span>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
   <div class="grid grid-cols-[2fr_1fr] gap-8">
     <div>
       <div class="flex justify-between items-center">
-        <span>Projetos recentemente adicionados</span>
-        <a>Ver todos os projetos</a>
+        <span class="font-medium text-sm">Projetos recentemente adicionados</span>
       </div>
 
       <div class="flex flex-col gap-3 mt-5">
-        <div class="p-4 rounded-lg border border-[#F4AB2B] flex justify-between items-center">
-          <div class="flex flex-col gap-1">
-            <strong>Nome do projeto</strong>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Região</span>
+        {% for item in most_recent_demands %}
+          <div class="p-4 rounded-lg border border-[#F4AB2B] flex justify-between items-center">
+            <div class="flex flex-col gap-1">
+              <strong>{{ item.user.project }}</strong>
+              <div class="flex gap-2 items-center">
+                <img src="../../static/img/star-yellow.png" alt="">
+                <span class="text-sm text-black/50 font-medium">
+                  {{ item.region}}
+                </span>
+              </div>
+              <div class="flex gap-2 items-center">
+                <img src="../../static/img/star-green.png" alt="">
+                <span class="text-sm text-black/50 font-medium">
+                  {{ item.user.name }}
+                </span>
+              </div>
             </div>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Embaixador</span>
-            </div>
+            
+            <a href="" class="grid w-8 h-8 place-items-center rounded-full bg-[#D9D9D9] text-lg font-bold">
+              >
+            </a>
           </div>
-          
-          <a href="" class="grid w-12 h-12 place-items-center rounded-full bg-[#D9D9D9] text-lg font-bold">
-            >
-          </a>
-        </div>
-        <div class="p-4 rounded-lg border border-[#F4AB2B] flex justify-between items-center">
-          <div class="flex flex-col gap-1">
-            <strong>Nome do projeto</strong>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Região</span>
-            </div>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Embaixador</span>
-            </div>
-          </div>
-          
-          <a href="" class="grid w-12 h-12 place-items-center rounded-full bg-[#D9D9D9] text-lg font-bold">
-            >
-          </a>
-        </div>
-        <div class="p-4 rounded-lg border border-[#F4AB2B] flex justify-between items-center">
-          <div class="flex flex-col gap-1">
-            <strong>Nome do projeto</strong>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Região</span>
-            </div>
-            <div class="flex gap-1">
-              <span class="text-[#000000] text-sm">Embaixador</span>
-            </div>
-          </div>
-          
-          <a href="" class="grid w-12 h-12 place-items-center rounded-full bg-[#D9D9D9] text-lg font-bold">
-            >
-          </a>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <div class="flex flex-col gap-5">
@@ -144,11 +86,10 @@
           <div class="flex gap-3">
             <div class="bg-[#D9D9D9] rounded-full w-10 h-10"></div>
             <div class="flex flex-col gap-1">
-              <span class="text-sm">Nome tal</span>
+              <span class="text-sm">Luis Ótavio</span>
               <span class="text-xs">(81) 9021-1231</span>
             </div>
           </div>
-
           <div class="bg-[#D9D9D9] rounded-full grid place-items-center w-10 h-10">
             >
           </div>

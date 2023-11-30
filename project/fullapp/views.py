@@ -26,9 +26,6 @@ def project_details(request, id):
     demand = Demand.objects.get(id=id)
     demands = Demand.objects.filter(status=StatusEnum.CONCLUDED, user =demand.user)
 
-
-    print(demands)
-
     if demand.status == 'Buscando Doadores':
         form = UpdateDemandForm()
 
@@ -174,7 +171,10 @@ def home(request):
   current_user = request.user
 
   if current_user.role == 1:
-    return render(request, 'management/home.html')
+    # most_recent_demands = Demand.objects.order_by('-created_at')[:3]
+    demands = ManagerMediator.home()
+
+    return render(request, 'management/home.html', demands)
   elif current_user.role == 2:
     user_demands_in_analysis = Demand.objects.filter(status=StatusEnum.IN_ANALISYS, region=current_user.region)
     approved_demands = Demand.objects.filter(status=StatusEnum.APPROVED, region=current_user.region)
@@ -230,7 +230,6 @@ def demands_by_region(request):
         return redirect('home')
 
     return render(request, 'embassor/demands_by_region.html', {'region_demands': region_demands})
-
 
 @login_required
 def demands(request):

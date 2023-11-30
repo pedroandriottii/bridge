@@ -1,4 +1,4 @@
-from .daos import SearchDAO, get_demands_by_status, UserDAO,  AuthDAO
+from .daos import SearchDAO, get_demands_by_status, get_demands_by_date, UserDAO,  AuthDAO
 from .models import StatusEnum
 
 class SearchMediator:
@@ -13,11 +13,15 @@ class SearchMediator:
 
 class DemandMediator:
   def get_demands():
+    oldest_demands = get_demands_by_date("oldest")
     looking_for_donors = get_demands_by_status(status=StatusEnum.LOOKING_FOR_DONORS)
     donors_found = get_demands_by_status(status=StatusEnum.DONORS_FOUND)
     concluded = get_demands_by_status(status=StatusEnum.CONCLUDED)
 
+    print(oldest_demands)
+
     return {
+      'oldest_demands': oldest_demands,
       'looking_for_donors': looking_for_donors,
       'donors_found': donors_found,
       'concluded': concluded
@@ -42,3 +46,14 @@ class ManagerMediator:
 
     def add_ambassador(self, form_data):
         return self.auth_dao.create_user(form_data, role=2)
+    
+    def home():
+      most_recent_demands = get_demands_by_date("latest")
+      oldest_demands = get_demands_by_date("oldest")[:5]
+
+      print(most_recent_demands)
+      
+      return {
+        'most_recent_demands': most_recent_demands,
+        'oldest_demands': oldest_demands
+      }
