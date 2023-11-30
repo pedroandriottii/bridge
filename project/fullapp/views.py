@@ -8,7 +8,7 @@ from .models import Demand, StatusEnum, RegionEnum, User
 from .mediators import DemandMediator
 from django.urls import reverse
 from datetime import timedelta, datetime
-from .mediators import SearchMediator, AuthMediator, ManagerMediator, UserMediator
+from .mediators import SearchMediator, ManagerMediator, UserMediator
 #done
 def search(request):
   mediator = SearchMediator()
@@ -67,16 +67,18 @@ def project_details(request, id):
 
 #done
 def signup(request):
-    mediator = AuthMediator()
-
     if request.method == 'POST':
-        user = mediator.signup_user(request.POST)
-        if user:
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
             login(request, user)
-            messages.success(request, f'Conta criada para {user.name}!')
+            messages.success(request, f'Conta criada para {user.username}!')
             return redirect("home")
         else:
-            form = SignupForm(request.POST) 
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
+
     else:
         form = SignupForm()
 
@@ -103,10 +105,7 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        mediator = AuthMediator()
-        user = mediator.signin(request, username, password)
-
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'Login bem-sucedido.')
