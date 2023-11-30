@@ -17,90 +17,39 @@
         </div>
 
         <h2 class="font-bold text-lg mb-4">Demandas</h2>
-
+        <p>em analise</p>
         <div class="flex overflow-x-auto gap-3 mb-7">
             {% for demand in in_analysis_demands %}
+            
             <a  href="{% url 'demand_detail' demand.id %}" >
-                <div class="w-[300px] h-[200px] bg-[#A7D9C7] rounded-[10px]">
-                    <p></p>
-                    <h1>titulo</h1>
+            <div class="min-w-[340px] w-full px-5 py-4 h-[200px] bg-[#A7D9C7]/40 rounded-[10px]">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-bold text-lg">{{ demand.description }}</h2>
+                    <div class="flex items-center justify-center bg-[#A7D9C7] w-8 h-8 rounded-full">></div>
                 </div>
+                <p class="mb-4">{{ demand.title }}</p>
+                <div class="flex items-center mb-3">
+                    <div class="flex gap-2 items-center mr-12">
+                        <img src="../../static/img/star-yellow.png"  alt="">
+                        <p class="text-[#787878]">{{ demand.region }}</p>
+                    </div>
+                    <div class="flex gap-2 items-center mr-12">
+                        <img src="../../static/img/star-green.png" alt="">
+                        <p class="text-[#787878]">{{user.username}}</p>
+                    </div>
+                </div>
+                <div class="bg-[#A7D9C7] w-[152px] rounded-lg flex gap-3 items-center text-white text-[12px] font-bold py-1 px-2">
+                    <img src="../../static/img/clock.png" alt="">
+                    <div>
+                        <p class="">Prazo estimado</p>
+                        <p>14/12/2023</p>
+                    </div>
+                </div>
+            </div>
             </a>
             {% empty %}
-                vazio
+                <h2>Nenhuma demanda</h2>
             {% endfor %}
-            <div class="min-w-[340px] w-full px-5 py-4 h-[200px] bg-[#A7D9C7]/40 rounded-[10px]">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="font-bold text-lg">Solicitacao de algo</h2>
-                    <div class="flex items-center justify-center bg-[#A7D9C7] w-8 h-8 rounded-full">></div>
-                </div>
-                <p class="mb-4">Nome do projeto</p>
-                <div class="flex items-center mb-3">
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-yellow.png"  alt="">
-                        <p class="text-[#787878]">Regiao</p>
-                    </div>
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-green.png" alt="">
-                        <p class="text-[#787878]">Embaixador</p>
-                    </div>
-                </div>
-                <div class="bg-[#A7D9C7] w-[152px] rounded-lg flex gap-3 items-center text-white text-[12px] font-bold py-1 px-2">
-                    <img src="../../static/img/clock.png" alt="">
-                    <div>
-                        <p class="">Prazo estimado</p>
-                        <p>15/11/2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-[340px] w-full px-5 py-4 h-[200px] bg-[#A7D9C7]/40 rounded-[10px]">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="font-bold text-lg">Solicitacao de algo</h2>
-                    <div class="flex items-center justify-center bg-[#A7D9C7] w-8 h-8 rounded-full">></div>
-                </div>
-                <p class="mb-4">Nome do projeto</p>
-                <div class="flex items-center mb-3">
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-yellow.png"  alt="">
-                        <p class="text-[#787878]">Regiao</p>
-                    </div>
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-green.png" alt="">
-                        <p class="text-[#787878]">Embaixador</p>
-                    </div>
-                </div>
-                <div class="bg-[#A7D9C7] w-[152px] rounded-lg flex gap-3 items-center text-white text-[12px] font-bold py-1 px-2">
-                    <img src="../../static/img/clock.png" alt="">
-                    <div>
-                        <p class="">Prazo estimado</p>
-                        <p>15/11/2023</p>
-                    </div>
-                </div>
-            </div>
-            <div class="min-w-[340px] w-full px-5 py-4 h-[200px] bg-[#A7D9C7]/40 rounded-[10px]">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="font-bold text-lg">Solicitacao de algo</h2>
-                    <div class="flex items-center justify-center bg-[#A7D9C7] w-8 h-8 rounded-full">></div>
-                </div>
-                <p class="mb-4">Nome do projeto</p>
-                <div class="flex items-center mb-3">
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-yellow.png"  alt="">
-                        <p class="text-[#787878]">Regiao</p>
-                    </div>
-                    <div class="flex gap-2 items-center mr-12">
-                        <img src="../../static/img/star-green.png" alt="">
-                        <p class="text-[#787878]">Embaixador</p>
-                    </div>
-                </div>
-                <div class="bg-[#A7D9C7] w-[152px] rounded-lg flex gap-3 items-center text-white text-[12px] font-bold py-1 px-2">
-                    <img src="../../static/img/clock.png" alt="">
-                    <div>
-                        <p class="">Prazo estimado</p>
-                        <p>15/11/2023</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     {% include "embassor/navbar.html" %}
