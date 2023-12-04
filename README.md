@@ -1,7 +1,8 @@
 ## Nosso projeto
 
 O bridge é uma ferramenta inovadora desenvolvida para auxiliar o nosso cliente: Os caçadores de bons exemplos, a gerenciar seus projetos e facilitar sua comunicação com as ONGs que solicitam sua ajuda e seus 88 embaixadores. É desenvolvido por alunos do terceiro período de ciência da computação, para a cadeira de projetos.
-![Progress](https://progress-bar.dev/58/?title=completed)
+
+![Progress](https://progress-bar.dev/100/?title=completed)
 
 ## Como Rodar
 
