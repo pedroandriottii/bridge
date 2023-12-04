@@ -1,7 +1,8 @@
 ## Nosso projeto
 
 O bridge é uma ferramenta inovadora desenvolvida para auxiliar o nosso cliente: Os caçadores de bons exemplos, a gerenciar seus projetos e facilitar sua comunicação com as ONGs que solicitam sua ajuda e seus 88 embaixadores. É desenvolvido por alunos do terceiro período de ciência da computação, para a cadeira de projetos.
-![100%]https://progress-bar.dev/<thepercentage>?title=Progresso>
+![Progress](https://progress-bar.dev/58/?title=completed)
+
 ## Como Rodar
 
 1. Primeiramente, é necessário clonar o repositório através do comando "git clone <url do repositório>". em seguida, precisamos acessar a pasta do repositório com o comando "cd bridge-projetos".
