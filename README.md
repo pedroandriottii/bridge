@@ -33,29 +33,54 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
 
 ## Integrantes
 
-<a href="https://github.com/arthurreis33">
-  <img src="https://github.com/arthurreis33.png" width="50" alt="Arthur Reis">
-</a>
+<div align="center">
+  <a href="https://github.com/arthurreis33">
+    <img src="https://github.com/arthurreis33.png" width="75" alt="Arthur Reis">
+    <br>
+    <strong>Arthur Reis</strong>
+  </a>
+</div>
 
-<a href="https://github.com/pedroandriottii">
-  <img src="https://github.com/pedroandriottii.png" width="50" alt="Pedro Andriotti">
-</a>
+<div align="center">
+  <a href="https://github.com/pedroandriottii">
+    <img src="https://github.com/pedroandriottii.png" width="75" alt="Pedro Andriotti">
+    <br>
+    <strong>Pedro Andriotti</strong>
+  </a>
+</div>
 
-<a href="https://github.com/CarlosAugustoP">
-  <img src="https://github.com/CarlosAugustoP.png" width="50" alt="Carlos Augusto">
-</a>
+<div align="center">
+  <a href="https://github.com/CarlosAugustoP">
+    <img src="https://github.com/CarlosAugustoP.png" width="75" alt="Carlos Augusto">
+    <br>
+    <strong>Carlos Augusto</strong>
+  </a>
+</div>
 
-<a href="https://github.com/grossiter04">
-  <img src="https://github.com/grossiter04.png" width="50" alt="Gabriel Rossiter">
-</a>
+<div align="center">
+  <a href="https://github.com/grossiter04">
+    <img src="https://github.com/grossiter04.png" width="75" alt="Gabriel Rossiter">
+    <br>
+    <strong>Gabriel Rossiter</strong>
+  </a>
+</div>
 
-<a href="https://github.com/edmaaralencar">
-  <img src="https://github.com/edmaaralencar.png" width="50" alt="Edmar Alencar">
-</a>
+<div align="center">
+  <a href="https://github.com/edmaaralencar">
+    <img src="https://github.com/edmaaralencar.png" width="75" alt="Edmar Alencar">
+    <br>
+    <strong>Edmar Alencar</strong>
+  </a>
+</div>
 
-<a href="https://github.com/luismingati">
-  <img src="https://github.com/luismingati.png" width="50" alt="Luiz Otávio">
-</a>
+<div align="center">
+  <a href="https://github.com/luismingati">
+    <img src="https://github.com/luismingati.png" width="75" alt="Luiz Otávio">
+    <br>
+    <strong>Luiz Otávio</strong>
+  </a>
+</div>
+
 
 
 
