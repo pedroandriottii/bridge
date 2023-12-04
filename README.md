@@ -15,7 +15,7 @@ O bridge é uma ferramenta inovadora desenvolvida para auxiliar o nosso cliente:
 4. Agora, precisamos acessar o diretório onde está nosso projeto, com o comando "cd project".
 ![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/5421a28a-c3fa-408c-ae46-bc129982bfb7)
 
-5. Finalmente, podemos rodar o server com o comando "python manage.py runserver".
+5. Finalmente, podemos rodar o server com o comando "python manage.py runserver". basta então clicar no link de servidor local.
 ![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/cbb74392-e83a-4c7a-afbe-fabb43308893)
 
    
@@ -31,10 +31,34 @@ Embaixadores: Serão responsáveis pela triagem dos projetos e seu acompanhament
 
 Ademais, o sistema também possui um mural atualizado automáticamente com vários marcos do projeto, disponibilizando tal informação para os gestores.
 
-## Histórias (IMPORTANTE)
+## Como usar (IMPORTANTE)
 
 Gestor:
+Nota-se que o gestor não poderá ser cadastrado imediatamente como um, e apenas gestores podem cadastrar novos gestores. Para acessar as hitórias seguintes, utilize as credencias de login:
+Usuário: Camila
+Senha: Teste.123
 
+1. Após o Login o usuário gestor poderá cadastrar novos gestores e embaixadores através da opção "cadastrar" na navbar.
+2. Ele também poderá visualizar todas as demandas no sistema, e buscar por elas com o nome de cada através da opção de busca acima na tela home.
+3. O gestor poderá também selecionar a opção ver todos, onde terá acesso ao quadro kanban, e poderá movimentar as demandas dentro desse quadro.
+4. Para fazer isso, basta apenas selecionar o círculo com '>' localizado no canto direito de cada card de demanda. Nesse card, detalhes serão mostrados, e podemos atualizar o andamento através da opção "Atualizar andamento"
+
+Embaixador:
+Nota-se que o embaixador não poderá ser cadastrado imediatamente como um, e apenas gestores podem cadastrar novos embaixadores. Para acessar as hitórias seguintes, utilize as credencias de login:
+Usuário: AnaOliveira
+Senha: Teste.123
+
+1. Deixe sua tela de browser em modo inspecionar, ou selecione a tecla "f12". Em seguida, troque o tipo de display para um de um celular.
+2. Após o Login, o usuário embaixador poderá acessar demandas, e atualizar o andamento das mesmas. Basta apenas selecionar o card, escolher o novo status através do box no meio da tela, e em seguida, clicando em "atualizar".
+3. Qualquer demanda submetida que ainda está em processo de triagem aparecerá na opção "triagem" da navbar. Lá, o embaixador poderá aprovar ou não projetos de sua região. Caso esses sejam aprovados, aparecerão na tela "inicio"
+4. Caso o embaixador deseje encerrar uma demanda, basta apenas atualizar seu status como "concluido". Essa ação reverberará na aba "Feed", onde veremos atualizações de todos os embaixadores.
+
+Usuário: 
+1. Na tela inicial do localhost, aperte a opção "Cadastre sua ONG"
+2. Preencha o formulário.
+3. Crie uma nova demanda. Para isso, selecionar o botão + próximo ao seu nome.
+4. Cadastre uma nova demanda.
+5. Agora, você poderá acompanhar o andamento de seu pedido!
 
 ## Integrantes
 
