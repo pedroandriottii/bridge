@@ -57,5 +57,5 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
   <img src="https://github.com/luismingati.png" width="50" alt="Luiz Otávio">
 </a>
 
-[![Luiz Otávio](https://github.com/luismingati.png)](https://github.com/luismingati)
+
 
