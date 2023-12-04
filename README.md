@@ -31,56 +31,82 @@ Embaixadores: Serão responsáveis pela triagem dos projetos e seu acompanhament
 
 Ademais, o sistema também possui um mural atualizado automáticamente com vários marcos do projeto, disponibilizando tal informação para os gestores.
 
+## Histórias (IMPORTANTE)
+
+Gestor:
+
+
 ## Integrantes
 
-<div align="center">
-  <a href="https://github.com/arthurreis33">
-    <img src="https://github.com/arthurreis33.png" width="75" alt="Arthur Reis">
-    <br>
-    <strong>Arthur Reis</strong>
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/pedroandriottii">
-    <img src="https://github.com/pedroandriottii.png" width="75" alt="Pedro Andriotti">
-    <br>
-    <strong>Pedro Andriotti</strong>
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/CarlosAugustoP">
-    <img src="https://github.com/CarlosAugustoP.png" width="75" alt="Carlos Augusto">
-    <br>
-    <strong>Carlos Augusto</strong>
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/grossiter04">
-    <img src="https://github.com/grossiter04.png" width="75" alt="Gabriel Rossiter">
-    <br>
-    <strong>Gabriel Rossiter</strong>
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/edmaaralencar">
-    <img src="https://github.com/edmaaralencar.png" width="75" alt="Edmar Alencar">
-    <br>
-    <strong>Edmar Alencar</strong>
-  </a>
-</div>
-
-<div align="center">
-  <a href="https://github.com/luismingati">
-    <img src="https://github.com/luismingati.png" width="75" alt="Luiz Otávio">
-    <br>
-    <strong>Luiz Otávio</strong>
-  </a>
-</div>
-
-
-
-
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/arthurreis33.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Arthur Reis
+        </sub>
+        <br>
+        <sub>
+          aars@cesar.school
+        </sub>
+      </td>
+      <td align="center">
+        <img src="https://github.com/pedroandriottii.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Pedro Andriotti
+        </sub>
+        <br>
+        <sub>
+          phab@cesar.school
+        </sub>
+      </td>
+      <td align="center">
+        <img src="https://github.com/CarlosAugustoP.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Carlos Augusto
+        </sub>
+        <br>
+        <sub>
+          capvf@cesar.school
+        </sub>
+      </td>
+      <td align="center">
+        <img src="https://github.com/grossiter04.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Gabriel Rossiter
+        </sub>
+        <br>
+        <sub>
+          gsr@cesar.school
+        </sub>
+      </td>
+       <td align="center">
+        <img src="https://github.com/edmaaralencar.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Edmar Alencar
+        </sub>
+        <br>
+        <sub>
+          era@cesar.school
+        </sub>
+      </td>
+       <td align="center">
+        <img src="https://github.com/luismingati.png" width="100" alt="foto" style="max-width: 100px;">
+        <br>
+        <sub>
+          Luis Otavio
+        </sub>
+        <br>
+        <sub>
+          locm@cesar.school
+        </sub>
+      </td>
+    </tr>
+  </tbody>
+</table>
