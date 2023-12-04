@@ -55,7 +55,7 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
 4. Para encerrar uma demanda, basta atualizar seu status como "concluído". Essa ação refletirá na aba "Feed", onde veremos atualizações de todos os embaixadores.
 
 ## Usuário:
-1. Na tela inicial do localhost, clique na opção "Cadastre sua ONG".
+1. Como antes, inspecione a tela e escolha um celular para visualização. Em seguida, Na tela inicial do localhost, clique na opção "Cadastre sua ONG".
 2. Preencha o formulário.
 3. Crie uma nova demanda, pressionando o botão + próximo ao seu nome.
 4. Cadastre uma nova demanda.
