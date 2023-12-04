@@ -33,10 +33,29 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
 
 ## Integrantes
 
-[![Arthur Reis](https://github.com/arthurreis33.png)](https://github.com/arthurreis33)
-[![Pedro Andriotti](https://github.com/pedroandriottii.png)](https://github.com/pedroandriottii)
-[![Carlos Augusto](https://github.com/CarlosAugustoP.png)](https://github.com/CarlosAugustoP)
-[![Gabriel Rossiter](https://github.com/grossiter04.png)](https://github.com/grossiter04)
-[![Edmar Alencar](https://github.com/edmaaralencar.png)](https://github.com/edmaaralencar)
+<a href="https://github.com/arthurreis33">
+  <img src="https://github.com/arthurreis33.png" width="50" alt="Arthur Reis">
+</a>
+
+<a href="https://github.com/pedroandriottii">
+  <img src="https://github.com/pedroandriottii.png" width="50" alt="Pedro Andriotti">
+</a>
+
+<a href="https://github.com/CarlosAugustoP">
+  <img src="https://github.com/CarlosAugustoP.png" width="50" alt="Carlos Augusto">
+</a>
+
+<a href="https://github.com/grossiter04">
+  <img src="https://github.com/grossiter04.png" width="50" alt="Gabriel Rossiter">
+</a>
+
+<a href="https://github.com/edmaaralencar">
+  <img src="https://github.com/edmaaralencar.png" width="50" alt="Edmar Alencar">
+</a>
+
+<a href="https://github.com/luismingati">
+  <img src="https://github.com/luismingati.png" width="50" alt="Luiz Otávio">
+</a>
+
 [![Luiz Otávio](https://github.com/luismingati.png)](https://github.com/luismingati)
 
