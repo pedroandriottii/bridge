@@ -69,70 +69,82 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
   <tbody>
     <tr>
       <td align="center">
-        <img src="https://github.com/arthurreis33.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Arthur Reis
-        </sub>
-        <br>
-        <sub>
-          aars@cesar.school
-        </sub>
+        <a href="https://github.com/arthurreis33">
+          <img src="https://github.com/arthurreis33.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Arthur Reis
+          </sub>
+          <br>
+          <sub>
+            aars@cesar.school
+          </sub>
+        </a>
       </td>
       <td align="center">
-        <img src="https://github.com/pedroandriottii.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Pedro Andriotti
-        </sub>
-        <br>
-        <sub>
-          phab@cesar.school
-        </sub>
+        <a href="https://github.com/pedroandriottii">
+          <img src="https://github.com/pedroandriottii.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Pedro Andriotti
+          </sub>
+          <br>
+          <sub>
+            phab@cesar.school
+          </sub>
+        </a>
       </td>
       <td align="center">
-        <img src="https://github.com/CarlosAugustoP.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Carlos Augusto
-        </sub>
-        <br>
-        <sub>
-          capvf@cesar.school
-        </sub>
+        <a href="https://github.com/CarlosAugustoP">
+          <img src="https://github.com/CarlosAugustoP.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Carlos Augusto
+          </sub>
+          <br>
+          <sub>
+            capvf@cesar.school
+          </sub>
+        </a>
       </td>
       <td align="center">
-        <img src="https://github.com/grossiter04.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Gabriel Rossiter
-        </sub>
-        <br>
-        <sub>
-          gsr@cesar.school
-        </sub>
+        <a href="https://github.com/grossiter04">
+          <img src="https://github.com/grossiter04.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Gabriel Rossiter
+          </sub>
+          <br>
+          <sub>
+            gsr@cesar.school
+          </sub>
+        </a>
       </td>
-       <td align="center">
-        <img src="https://github.com/edmaaralencar.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Edmar Alencar
-        </sub>
-        <br>
-        <sub>
-          era@cesar.school
-        </sub>
+      <td align="center">
+        <a href="https://github.com/edmaaralencar">
+          <img src="https://github.com/edmaaralencar.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Edmar Alencar
+          </sub>
+          <br>
+          <sub>
+            era@cesar.school
+          </sub>
+        </a>
       </td>
-       <td align="center">
-        <img src="https://github.com/luismingati.png" width="100" alt="foto" style="max-width: 100px;">
-        <br>
-        <sub>
-          Luis Otavio
-        </sub>
-        <br>
-        <sub>
-          locm@cesar.school
-        </sub>
+      <td align="center">
+        <a href="https://github.com/luismingati">
+          <img src="https://github.com/luismingati.png" width="100" alt="foto" style="max-width: 100px;">
+          <br>
+          <sub>
+            Luis Otavio
+          </sub>
+          <br>
+          <sub>
+            locm@cesar.school
+          </sub>
+        </a>
       </td>
     </tr>
   </tbody>
