@@ -15,7 +15,7 @@ O bridge é uma ferramenta inovadora desenvolvida para auxiliar o nosso cliente:
 4. Agora, precisamos acessar o diretório onde está nosso projeto, com o comando "cd project".
 ![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/5421a28a-c3fa-408c-ae46-bc129982bfb7)
 
-5. Finalmente, podemos rodar o server com o comando "python manage.py runserver". basta então clicar no link de servidor local. caso um prompt vermelho apareça, solicitando que sejam feitas migrações, escreva python manage.py makemigrations e em seguida ython manage.py makemigrate no terminal.
+5. Finalmente, podemos rodar o server com o comando "python manage.py runserver". basta então clicar no link de servidor local. caso um prompt vermelho apareça, solicitando que sejam feitas migrações, escreva python manage.py makemigrations e em seguida python manage.py migrate no terminal.
 ![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/cbb74392-e83a-4c7a-afbe-fabb43308893)
 
    
