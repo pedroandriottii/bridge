@@ -1,27 +1,52 @@
-## Nosso projeto
+# Bridge
 
 O bridge é uma ferramenta inovadora desenvolvida para auxiliar o nosso cliente: Os caçadores de bons exemplos, a gerenciar seus projetos e facilitar sua comunicação com as ONGs que solicitam sua ajuda e seus 88 embaixadores. É desenvolvido por alunos do terceiro período de ciência da computação, para a cadeira de projetos.
 
 ![Progress](https://progress-bar.dev/100/?title=completed)
 
-## Como Rodar
+## Requirements
 
-1. Primeiramente, é necessário clonar o repositório através do comando "git clone <url do repositório>". em seguida, precisamos acessar a pasta do repositório com o comando "cd bridge-projetos".
-![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/1fbca312-9734-4b2b-bf09-5488720aa5a0)
+- Python
 
-3. Em seguida, é necessário instalar todos os pacotes necesários para abrir o servidor localmente. Podemos fazer isso com o simples comando "pip install -r requirements.txt".
-![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/c60560c9-7caf-4a56-a9e7-8cda90290e70)
+## Como Executar:
 
-4. Agora, precisamos acessar o diretório onde está nosso projeto, com o comando "cd project".
-![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/5421a28a-c3fa-408c-ae46-bc129982bfb7)
+1 - Clonar o Repositório.
+```
+git clone https://github.com/pedroandriottii/bridge
+```
+2 - Ir ao diretório do Requirements.txt
+```
+cd bridge
+```
+3 - Criar um Ambiente Virtual com a biblioteca VirtualEnv ("pip install virtualenv") ou como desejar.
 
-5. Finalmente, podemos rodar o server com o comando "python manage.py runserver". basta então clicar no link de servidor local. caso um prompt vermelho apareça, solicitando que sejam feitas migrações, escreva python manage.py makemigrations e em seguida python manage.py migrate no terminal.
-![image](https://github.com/edmaaralencar/bridge-projetos/assets/117591564/cbb74392-e83a-4c7a-afbe-fabb43308893)
+4 - Instalar as dependências.
+```
+pip install -r requirements.txt
+```
 
-   
-## Funcionalidades
+4 - Acessar o diretório do projeto.
+```
+cd project
+```
 
-Nosso software contará com três logins: 
+5 - Executar as migrações
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
+
+6 - Finalmente, abrir o servidor.
+```
+python manage.py runserver
+```
+
+
+## Funcionalidades:
+
+Nossa aplicação contará com três usuários: 
 
 Gestores: Supervisionam cada projeto cadastrado no sistema, e possibilitarão os cadastros de novos embaixadores e gestores para a rede.
 
@@ -31,30 +56,32 @@ Embaixadores: Serão responsáveis pela triagem dos projetos e seu acompanhament
 
 Ademais, o sistema também possui um mural atualizado automáticamente com vários marcos do projeto, disponibilizando tal informação para os gestores.
 
+## Como utilizar:
 
-# Como usar (IMPORTANTE)
+### Gestor:
 
-## Gestor:
-**Nota:** O gestor não pode ser cadastrado imediatamente. Apenas gestores têm permissão para cadastrar novos gestores. Para acessar as histórias seguintes, utilize as seguintes credenciais de login:
-- **Usuário:** Camila
-- **Senha:** Teste.123
+*Nota:* O gestor não pode ser cadastrado imediatamente. Apenas gestores têm permissão para cadastrar novos gestores. Para acessar as histórias seguintes, utilize as seguintes credenciais de login:
+- *Usuário:* Camila
+- *Senha:* Teste.123
 
 1. Após o login, o usuário gestor pode cadastrar novos gestores e embaixadores através da opção "cadastrar" na navbar.
 2. Visualize todas as demandas no sistema e busque por elas utilizando o nome através da opção de busca na tela inicial.
 3. Selecione "ver todos" para acessar o quadro kanban e movimentar as demandas dentro desse quadro.
 4. Para mover uma demanda, clique no círculo com '>' no canto direito de cada card. Detalhes serão mostrados, e você pode atualizar o andamento através da opção "Atualizar andamento".
 
-## Embaixador:
-**Nota:** O embaixador não pode ser cadastrado imediatamente. Apenas gestores podem cadastrar novos embaixadores. Para acessar as histórias seguintes, utilize as seguintes credenciais de login:
-- **Usuário:** AnaOliveira
-- **Senha:** Teste.123
+### Embaixador:
+
+*Nota:* O embaixador não pode ser cadastrado imediatamente. Apenas gestores podem cadastrar novos embaixadores. Para acessar as histórias seguintes, utilize as seguintes credenciais de login:
+- *Usuário:* AnaOliveira
+- *Senha:* Teste.123
 
 1. Deixe sua tela de navegador em modo de inspeção ou selecione a tecla "f12". Em seguida, alterne o tipo de exibição para o de um celular.
 2. Após o login, o usuário embaixador pode acessar demandas e atualizar o andamento delas. Basta selecionar o card, escolher o novo status através do box no meio da tela e, em seguida, clicar em "atualizar".
 3. Demandas em processo de triagem aparecerão na opção "triagem" da navbar. Lá, o embaixador pode aprovar ou não projetos de sua região. Caso aprovados, eles aparecerão na tela "inicio".
 4. Para encerrar uma demanda, basta atualizar seu status como "concluído". Essa ação refletirá na aba "Feed", onde veremos atualizações de todos os embaixadores.
 
-## Usuário:
+### Usuário:
+
 1. Como antes, inspecione a tela e escolha um celular para visualização. Em seguida, Na tela inicial do localhost, clique na opção "Cadastre sua ONG".
 2. Preencha o formulário.
 3. Crie uma nova demanda, pressionando o botão + próximo ao seu nome.
@@ -62,8 +89,7 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
 5. Agora, você pode acompanhar o andamento do seu pedido!
 
 
-
-## Integrantes
+## Autores
 
 <table>
   <tbody>
@@ -149,3 +175,7 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
     </tr>
   </tbody>
 </table>
+
+## Aplicação em Funcionamento
+
+GIF EM BREVE
