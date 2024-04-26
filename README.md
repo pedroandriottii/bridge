@@ -176,6 +176,9 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
   </tbody>
 </table>
 
+## Figma:
+https://www.figma.com/file/OEDfRgNAblSyVfwKMyAcWm/BRIDGE?type=design&node-id=2%3A33&mode=design&t=BnsNGv7IA8mYflY0-1
+
 ## Aplicação em Funcionamento
 
 GIF EM BREVE
