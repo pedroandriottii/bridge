@@ -180,5 +180,9 @@ Ademais, o sistema também possui um mural atualizado automáticamente com vári
 https://www.figma.com/file/OEDfRgNAblSyVfwKMyAcWm/BRIDGE?type=design&node-id=2%3A33&mode=design&t=BnsNGv7IA8mYflY0-1
 
 ## Aplicação em Funcionamento
-
-GIF EM BREVE
+### USUÁRIO
+![GIF USUÁRIO PRONTO](https://github.com/pedroandriottii/candyerp-front/assets/112347899/663037b0-86a9-4076-b601-55065cb5bad1)
+### Embaixador
+![GIF EMBAIXADOR](https://github.com/pedroandriottii/candyerp-front/assets/112347899/55281897-4cdb-4245-ab8c-2a56ba4d4857)
+### Gestão
+![GIF GESTOR PRONTO](https://github.com/pedroandriottii/candyerp-front/assets/112347899/82a2f287-8f55-4c17-81e6-55dc6aa16ef9)
