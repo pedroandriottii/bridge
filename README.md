@@ -181,8 +181,8 @@ https://www.figma.com/file/OEDfRgNAblSyVfwKMyAcWm/BRIDGE?type=design&node-id=2%3
 
 ## Aplicação em Funcionamento
 ### USUÁRIO
-![GIF USUÁRIO PRONTO](https://github.com/pedroandriottii/candyerp-front/assets/112347899/663037b0-86a9-4076-b601-55065cb5bad1)
+![ezgif com-video-to-gif-converter (1)](https://github.com/pedroandriottii/candyerp-front/assets/112347899/398810b1-3f1d-4be1-9d25-7060c6370c2b)
 ### Embaixador
-![GIF EMBAIXADOR](https://github.com/pedroandriottii/candyerp-front/assets/112347899/55281897-4cdb-4245-ab8c-2a56ba4d4857)
+![ezgif com-video-to-gif-converter](https://github.com/pedroandriottii/candyerp-front/assets/112347899/cedffa61-c21e-4156-b093-9a6f69e141f9)
 ### Gestão
-![GIF GESTOR PRONTO](https://github.com/pedroandriottii/candyerp-front/assets/112347899/82a2f287-8f55-4c17-81e6-55dc6aa16ef9)
+![ezgif com-video-to-gif-converter (2)](https://github.com/pedroandriottii/candyerp-front/assets/112347899/ed5c82f5-2c82-44e2-a8e4-83dc7b78ccfe)
